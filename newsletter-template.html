@@ -1,394 +1,611 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" style="font-size:16px;">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="x-apple-disable-message-reformatting">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{NEWSLETTER_TITLE}} — 4minit</title>
-  <!--[if !mso]><!-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Merriweather+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <!--<![endif]-->
-  <style>
-    /* ── Reset ── */
-    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; }
-    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; display: block; }
-    body { margin: 0 !important; padding: 0 !important; width: 100% !important; }
-
-    /* ── Outer wrapper ── */
-    .outer {
-      width: 100%;
-      background-color: #F3F4F6;
-    }
-    .inner {
-      max-width: 620px;
-      margin: 0 auto;
-      background-color: #ffffff;
-    }
-
-    /* ── Header ── */
-    .hd {
-      background-color: #030712;
-      padding: 28px 40px 24px;
-      text-align: center;
-    }
-    .hd-logo {
-      font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
-      font-size: 30px;
-      font-weight: 900;
-      color: #ffffff;
-      letter-spacing: 3px;
-      text-decoration: none;
-      display: inline-block;
-      line-height: 1;
-    }
-    .hd-logo span { color: #DFD150; }
-    .hd-tagline {
-      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      color: #9CA3AF;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      margin-top: 8px;
-    }
-
-    /* ── Date bar ── */
-    .date-bar {
-      background-color: #DFD150;
-      padding: 8px 40px;
-      text-align: center;
-      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      color: #030712;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    /* ── Subtitle strip ── */
-    .subtitle-strip {
-      background-color: #ffffff;
-      border-bottom: 1px solid #E5E7EB;
-      padding: 16px 40px;
-      font-family: 'Merriweather', Georgia, serif;
-      font-size: 13px;
-      font-style: italic;
-      color: #6B7280;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    /* ── Body ── */
-    .body { padding: 0 40px 40px; }
-
-    /* ── Section label ── */
-    .section-label {
-      margin-top: 36px;
-      margin-bottom: 18px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #DFD150;
-      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: #030712;
-    }
-
-    /* ── Story headlines ── */
-    h2.story-headline {
-      font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
-      font-size: 22px;
-      font-weight: 900;
-      color: #030712;
-      margin: 0 0 12px;
-      line-height: 1.3;
-    }
-    h3.story-headline {
-      font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
-      font-size: 17px;
-      font-weight: 700;
-      color: #030712;
-      margin: 0 0 10px;
-      line-height: 1.35;
-    }
-
-    /* ── Story blocks ── */
-    .story {
-      margin-bottom: 28px;
-      padding-bottom: 28px;
-      border-bottom: 1px solid #E5E7EB;
-    }
-    .story:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
-
-    .story p {
-      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      line-height: 1.7;
-      color: #030712;
-      margin: 0 0 10px;
-    }
-    .story p:last-child { margin-bottom: 0; }
-    .story p em {
-      font-family: 'Merriweather', Georgia, serif;
-      font-style: italic;
-      color: #6B7280;
-      font-size: 14px;
-    }
-    .story a { color: #030712; text-decoration: underline; text-decoration-color: #DFD150; text-underline-offset: 2px; }
-
-    /* ── Big Story ── */
-    .big-story h2.story-headline { font-size: 24px; }
-    .big-story p { font-size: 15px; line-height: 1.75; margin-bottom: 12px; }
-
-    /* ── Shorts ── */
-    .shorts-label {
-      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #9CA3AF;
-      margin: 24px 0 10px;
-    }
-    .short-item {
-      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #374151;
-      padding: 9px 0;
-      border-top: 1px solid #E5E7EB;
-    }
-    .short-item strong {
-      color: #030712;
-      font-weight: 600;
-    }
-
-    /* ── By the Numbers ── */
-    .number-item {
-      background-color: #FEFCE8;
-      border-left: 3px solid #DFD150;
-      border-radius: 0 6px 6px 0;
-      padding: 16px 18px;
-      margin-bottom: 12px;
-    }
-    .number-item:last-child { margin-bottom: 0; }
-    .number-lead {
-      font-family: 'Merriweather', Georgia, serif;
-      font-size: 24px;
-      font-weight: 900;
-      color: #030712;
-      margin-bottom: 6px;
-      line-height: 1.15;
-    }
-    .number-item p {
-      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      line-height: 1.65;
-      color: #374151;
-      margin: 0;
-    }
-
-    /* ── Deep End ── */
-    .deep-end-item {
-      background-color: #F9FAFB;
-      border: 1px solid #E5E7EB;
-      border-radius: 6px;
-      padding: 20px 22px;
-      margin-bottom: 12px;
-    }
-    .deep-end-item:last-child { margin-bottom: 0; }
-    .deep-end-item p {
-      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      line-height: 1.7;
-      color: #374151;
-      margin: 0 0 8px;
-    }
-    .deep-end-item p:last-child { margin: 0; }
-    .deep-end-item p em { font-family: 'Merriweather', Georgia, serif; font-style: italic; color: #6B7280; }
-    .deep-end-item a { color: #030712; text-decoration: underline; text-decoration-color: #DFD150; }
-
-    /* ── Footer ── */
-    .footer {
-      background-color: #030712;
-      padding: 28px 40px;
-      text-align: center;
-    }
-    .footer-logo {
-      font-family: 'Merriweather', Georgia, serif;
-      font-size: 18px;
-      font-weight: 900;
-      color: #ffffff;
-      letter-spacing: 2px;
-      text-decoration: none;
-      display: inline-block;
-      margin-bottom: 12px;
-    }
-    .footer-logo span { color: #DFD150; }
-    .footer p {
-      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
-      font-size: 12px;
-      color: #6B7280;
-      margin: 0 0 6px;
-      line-height: 1.6;
-    }
-    .footer p:last-child { margin: 0; }
-    .footer a { color: #9CA3AF; text-decoration: none; }
-    .footer a:hover { color: #DFD150; }
-    .footer .unsub { font-size: 11px; color: #4B5563; }
-    .footer .unsub a { color: #6B7280; }
-
-    /* ── Links in content ── */
-    a { color: #030712; }
-
-    /* ── Mobile ── */
-    @media only screen and (max-width: 640px) {
-      .inner { width: 100% !important; }
-      .hd, .date-bar, .subtitle-strip, .body, .footer {
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-      }
-      h2.story-headline { font-size: 20px !important; }
-      .big-story h2.story-headline { font-size: 21px !important; }
-      .number-lead { font-size: 21px !important; }
-    }
-  </style>
+<meta charset="utf-8">
+<!--[if !mso]><!-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--<![endif]-->
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<!--
+  PLACEHOLDER: replace {{NEWSLETTER_TITLE}} with the LS1 headline (plain text, no tags).
+  This becomes the <title>, the email subject line, and the h1 in the header.
+-->
+<title>{{NEWSLETTER_TITLE}} — 4minit</title>
+<!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+<style>
+  :root { color-scheme: light; supported-color-schemes: light; }
+  body { margin: 0; padding: 0; min-width: 100% !important; -ms-text-size-adjust: 100% !important; -webkit-text-size-adjust: 100% !important; -webkit-font-smoothing: antialiased !important; }
+  .body { word-wrap: normal; word-spacing: normal; }
+  table.mso { width: 100%; border-collapse: collapse; padding: 0; table-layout: fixed; }
+  img { border: 0; outline: none; }
+  table { mso-table-lspace: 0px; mso-table-rspace: 0px; }
+  td, a, span { mso-line-height-rule: exactly; }
+  #root [x-apple-data-detectors=true], a[x-apple-data-detectors=true],
+  #MessageViewBody a { color: inherit !important; text-decoration: inherit !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
+  span.MsoHyperlink { color: inherit !important; mso-style-priority: 99 !important; }
+  span.MsoHyperlinkFollowed { color: inherit !important; mso-style-priority: 99 !important; }
+  /* Backgrounds */
+  .a  { background-color: #FFFFFF; }
+  .b  { background-color: #FFFFFF; }
+  .c  { background-color: #FFFFFF; }
+  /* Green divider */
+  .j  { border-top: 1px solid #2CA156; }
+  /* Heading styles */
+  h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, ul, li, ol, p, p a { margin: 0; padding: 0; }
+  h1 { font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; font-size: 20px; color: #2CA156; line-height: 1; padding-bottom: 10px; padding-top: 10px; }
+  h2 { font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; font-size: 18px; color: #2CA156FF; line-height: 1; padding-bottom: 10px; padding-top: 10px; }
+  h4 { font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; font-size: 14px; color: #333333; line-height: 2; padding-bottom: 0; padding-top: 0; }
+  /* Body text */
+  p { font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; color: #333333; font-size: 16px; line-height: 1.5; padding-bottom: 10px; padding-top: 10px; }
+  /* Links in body */
+  p a, .e a, ul a, li a { word-break: break-word; color: #1B75D0FF !important; text-decoration: none; font-weight: bold; }
+  p a span, .e a span, ul a span, li a span { color: inherit; }
+  .link { color: #1B75D0FF !important; text-decoration: none; font-weight: bold; }
+  /* Date bar (small text top-right) */
+  .f p { font-size: 12px; line-height: 15px; color: #333333; padding: 0; }
+  .f p a { color: #333333 !important; }
+  /* Italic commentary */
+  .i p  { font-family: 'Helvetica', Arial, sans-serif; line-height: 1.5; font-size: 16px; color: #333333; }
+  .i p a { color: #333333 !important; }
+  /* Footer unsubscribe */
+  .w p   { font-size: 12px; line-height: 15px; font-weight: 400; color: #555555; }
+  .w p a { text-decoration: underline !important; color: #555555 !important; }
+  /* h1 links in section headers */
+  h1 a { text-decoration: none; color: #1B75D0FF !important; font-weight: bold; }
+  /* CTA button */
+  .v { border-radius: 8px; border: solid 0px #2CA156; background-color: #2CA156; font-family: 'Helvetica', Arial, sans-serif; color: #FFFFFF; }
+  .v a { text-decoration: none; display: block; color: #FFFFFF; }
+  /* Prose content cell */
+  .e h3, .e p, .e span { padding-bottom: 0; padding-top: 0; }
+  .e span, .e li { font-family: 'Helvetica', Arial, sans-serif; font-size: 16px; color: #333333; line-height: 24px; }
+  /* Copyright */
+  .copyright a { color: inherit !important; text-decoration: none !important; font-size: inherit !important; }
+  /* Responsive */
+  @media only screen and (max-width: 667px) {
+    .aa, .w100pc { width: 100% !important; }
+    .bodyWrapper  { padding: 4px 4px 4px 4px !important; }
+  }
+  @media screen and (max-width: 480px) {
+    u + .a .gg { width: 100% !important; width: 100vw !important; }
+  }
+</style>
+<!--[if mso]><style type="text/css">
+  h1, h2, h3, h4, h5, h6 { font-family: Arial, sans-serif !important; }
+  body, table, td, p, a, span { font-family: Arial, sans-serif !important; }
+</style><![endif]-->
 </head>
-<body>
 
-<!-- Preheader (hidden preview text in email clients) -->
-<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#F3F4F6;">
-{{NEWSLETTER_SUBTITLE}}
-</div>
+<body class="a" style="margin:0 auto;padding:0;word-wrap:normal;word-spacing:normal;background-color:#FFFFFF;">
+<div role="article" aria-roledescription="email" aria-label="4minit newsletter" lang="en" style="font-size:1rem">
 
-<div class="outer">
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-    <tr><td align="center" style="padding: 24px 10px;">
-    <table class="inner" width="620" cellpadding="0" cellspacing="0" border="0" style="max-width:620px;">
+<!-- ── PREHEADER (hidden preview text) ── -->
+<!--
+  PLACEHOLDER: replace {{NEWSLETTER_SUBTITLE}} with:
+  "LS2 Headline. RS1 Headline. GS1 Headline."
+  (plain text, no tags)
+-->
+<div style="display:none;max-height:0px;overflow:hidden;">{{NEWSLETTER_SUBTITLE}} &#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;&#160;&#8204;</div>
 
-      <!-- ── HEADER ── -->
-      <tr>
-        <td class="hd">
-          <div class="hd-logo">4<span>minit</span></div>
-          <div class="hd-tagline">Mauritius Morning Brief</div>
-        </td>
-      </tr>
+<!-- ── OUTER WRAPPER ── -->
+<table role="none" width="100%" border="0" cellspacing="0" align="center" cellpadding="0" class="gg">
+<tr><td align="center" valign="top">
 
-      <!-- ── DATE BAR ── -->
-      <!--
-        Replace {{NEWSLETTER_DATE_LONG}} with e.g. "Saturday 5 April 2026"
-      -->
-      <tr>
-        <td class="date-bar">{{NEWSLETTER_DATE_LONG}}</td>
-      </tr>
+  <!-- ── 670px CONTAINER ── -->
+  <table role="none" width="670" border="0" cellspacing="0" cellpadding="0" class="aa" style="width:670px;table-layout:fixed;">
+  <tr><td class="bodyWrapper" align="center" valign="top" style="padding:4px 4px 4px 4px;">
+  <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 
-      <!-- ── SUBTITLE ── -->
-      <!--
-        Replace {{NEWSLETTER_SUBTITLE}} with "LS2 Headline. RS1 Headline. GS1 Headline."
-      -->
-      <tr>
-        <td class="subtitle-strip">{{NEWSLETTER_SUBTITLE}}</td>
-      </tr>
 
-      <!-- ══════════════════════════════════════════════════════
-           BODY
-      ══════════════════════════════════════════════════════ -->
-      <tr>
-        <td class="body">
+  <!-- ══════════════════════════════════════════════════════
+       HEADER — logo + title + subtitle
+       White background, rounded top corners
+  ══════════════════════════════════════════════════════ -->
+  <tr><td align="center" valign="top"
+      style="border-width:0;border-style:solid;border-color:#2CA156;border-radius:15px 15px 0 0;background-color:#FFFFFF;"
+      class="c">
+    <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 
-          <!-- ─ SECTION 1: THE BIG STORY ─
-            Replace {{BIG_STORY}} with:
-              <div class="story big-story">
-                <h2 class="story-headline">LS1 Headline</h2>
-                <p>Paragraph. (2-3 paragraphs, 800-1200 chars total)</p>
-                <p>Second paragraph.</p>
-                <p><em>Optional italic commentary (max 120 chars).</em></p>
-              </div>
-          -->
-          <div class="section-label">The Big Story</div>
-          {{BIG_STORY}}
+      <!-- Date + Read online -->
+      <tr id="header"><td style="padding:4px 4px 0 4px;">
+        <div style="padding-top:8px;padding-right:8px;padding-bottom:8px;padding-left:8px;">
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 
-          <!-- ─ SECTION 2: IN MAURITIUS ─
-            Replace {{IN_MAURITIUS}} with LS2–LS5 stories then Shorts.
+            <!-- Date right-aligned -->
+            <tr>
+              <td class="f" align="right" valign="top">
+                <!--
+                  PLACEHOLDER: replace {{NEWSLETTER_DATE}} with the date string
+                  e.g. "April 05, 2026"
+                -->
+                <p>{{NEWSLETTER_DATE}} &nbsp;|&nbsp; <a href="https://4minit.xyz/newsletters.html">Read online</a></p>
+              </td>
+            </tr>
 
-            Each story (LS2-LS5):
-              <div class="story">
-                <h3 class="story-headline">Headline</h3>
-                <p>Content. Max 3 sentences per paragraph.</p>
-                <p><em>Optional italic commentary.</em></p>
-              </div>
+            <!-- Logo image centered -->
+            <tr>
+              <td class="dd" align="center" valign="top" style="width:100%;text-align:center;">
+                <table role="none" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:16px auto 16px;padding:0;">
+                  <tbody><tr>
+                    <td style="width:261px;padding:0;text-align:center;">
+                      <a href="https://4minit.xyz">
+                        <img alt="4minit" width="261" height="auto" border="0"
+                          style="width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;margin:0 auto;"
+                          src="https://4minit.xyz/002%20Branding/Header_v02_White.png">
+                      </a>
+                    </td>
+                  </tr></tbody>
+                </table>
+              </td>
+            </tr>
 
-            Shorts subsection after LS5:
-              <div class="shorts-label">Shorts</div>
-              <div class="short-item"><strong>Headline (max 50 chars)</strong> — One sentence.</div>
-              [SH2–SH5 same format]
-          -->
-          <div class="section-label">In Mauritius</div>
-          {{IN_MAURITIUS}}
+            <!-- Newsletter headline + subtitle -->
+            <tr>
+              <td class="dd" align="center" valign="top" style="padding:15px 0;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                  <tr><td align="center" valign="top">
+                    <!--
+                      PLACEHOLDER: {{NEWSLETTER_TITLE}} — LS1 headline, plain text.
+                      The 🇲🇺 emoji prefix is included in the template.
+                    -->
+                    <h1 style="text-align:left;font-family:'Helvetica',Arial,sans-serif;font-weight:700;font-size:32px;color:#333333;padding:4px 0;line-height:38px;">🇲🇺 {{NEWSLETTER_TITLE}}</h1>
+                    <!--
+                      PLACEHOLDER: {{NEWSLETTER_SUBTITLE}} — plain text subtitle:
+                      "LS2 Headline. RS1 Headline. GS1 Headline."
+                    -->
+                    <p style="text-align:left;font-family:'Helvetica',Arial,sans-serif;font-weight:400;font-size:18px;color:#555555;padding:8px 0;line-height:22px;">{{NEWSLETTER_SUBTITLE}}</p>
+                  </td></tr>
+                </table>
+              </td>
+            </tr>
 
-          <!-- ─ SECTION 3: BY THE NUMBERS ─
-            Replace {{BY_THE_NUMBERS}} with 3 items:
-              <div class="number-item">
-                <div class="number-lead">NUMBER descriptor</div>
-                <p>Mini story (max 400 chars, max 4 sentences).</p>
-              </div>
-              [repeat ×3]
-          -->
-          <div class="section-label">By The Numbers</div>
-          {{BY_THE_NUMBERS}}
-
-          <!-- ─ SECTION 4: IN OUR BACKYARD ─
-            Replace {{IN_OUR_BACKYARD}} with RS1–RS3 (same format as LS2–LS5 stories).
-          -->
-          <div class="section-label">In Our Backyard</div>
-          {{IN_OUR_BACKYARD}}
-
-          <!-- ─ SECTION 5: AROUND THE WORLD ─
-            Replace {{AROUND_THE_WORLD}} with GS1–GS3 (same format as LS2–LS5 stories).
-          -->
-          <div class="section-label">Around The World</div>
-          {{AROUND_THE_WORLD}}
-
-          <!-- ─ SECTION 6: THE DEEP END ─
-            Replace {{THE_DEEP_END}} with DE1 (and DE2 if injected item lands here):
-              <div class="deep-end-item">
-                <h3 class="story-headline">Title</h3>
-                <p>Content. Up to 2 paragraphs, max 500 chars total.</p>
-                <p><em>Optional italic commentary.</em></p>
-              </div>
-          -->
-          <div class="section-label">The Deep End</div>
-          {{THE_DEEP_END}}
-
-        </td>
-      </tr>
-
-      <!-- ── FOOTER ── -->
-      <tr>
-        <td class="footer">
-          <div><a class="footer-logo" href="https://4minit.xyz">4<span>minit</span></a></div>
-          <p>
-            <a href="https://4minit.xyz">4minit.xyz</a>
-            &nbsp;·&nbsp;
-            <a href="https://4minit.xyz/newsletters.html">Archive</a>
-            &nbsp;·&nbsp;
-            <a href="https://4minit.xyz">Subscribe</a>
-          </p>
-          <p class="unsub" style="margin-top:14px;">
-            You're receiving this because you subscribed at 4minit.xyz.<br>
-            <a href="{{unsubscribeLink}}">Unsubscribe</a>
-          </p>
-        </td>
-      </tr>
+          </table>
+        </div>
+      </td></tr>
 
     </table>
-    </td></tr>
-  </table>
-</div>
+  </td></tr>
 
+
+  <!-- ══════════════════════════════════════════════════════
+       CONTENT BLOCKS
+  ══════════════════════════════════════════════════════ -->
+  <tr id="content-blocks"><td class="email-card-body" align="center" valign="top" style="padding-bottom:0;">
+  <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+
+
+    <!-- ── INTRO BOX (dashed green) ── -->
+    <tr><td>
+      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
+        <tr><td height="4px" style="line-height:1px;font-size:1px;height:4px;">&nbsp;</td></tr>
+        <tr><td>
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+              <td bgcolor="transparent" style="background-color:transparent;border-color:#2ca156;border-style:dashed;border-width:1px;padding:4px 4px 4px 4px;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr><td class="dd" align="justify" style="padding:0 4px;text-align:justify;word-break:break-word;">
+                    <p style="mso-line-height-alt:150%;">🌟<b> Good morning!</b> This is 4minit, delivering today's top stories from Mauritius and around the world.</p>
+                  </td></tr>
+                  <tr><td class="dd" align="justify" style="padding:0 4px;text-align:justify;word-break:break-word;">
+                    <p style="mso-line-height-alt:150%;"><span style="color:#555;font-size:0.8rem;">Estimated reading time: </span><span style="color:#555;font-size:0.8rem;"><b>4 minutes ⏱️</b></span></p>
+                  </td></tr>
+                  <tr><td class="dd" align="justify" style="padding:0 4px;text-align:justify;word-break:break-word;">
+                    <p style="mso-line-height-alt:150%;"><span style="font-size:0.8rem;">New here? </span><span style="font-size:0.8rem;"><a class="link" href="https://4minit.xyz">Subscribe to our FREE daily newsletter!</a></span></p>
+                  </td></tr>
+                </table>
+              </td>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+            </tr>
+          </table>
+        </td></tr>
+        <tr><td height="20px" style="line-height:1px;font-size:1px;height:20px;">&nbsp;</td></tr>
+      </table>
+    </td></tr>
+
+
+    <!-- ════════════════════════════════════════════════════
+         SECTION 1 — THE BIG STORY   [#eb5555 coral red]
+
+         Replace {{BIG_STORY}} with <tr><td> rows:
+
+         Story headline:
+           <tr><td class="dd" align="justify" style="padding:0px 4px;text-align:justify;word-break:break-word;">
+             <p style="mso-line-height-alt:150.0%;"><span style="font-weight:700;"><b>Headline text</b></span></p>
+           </td></tr>
+
+         Body paragraph (repeat as needed, 2-3 paragraphs for LS1):
+           <tr><td class="dd" align="justify" style="padding:0px 4px;text-align:justify;word-break:break-word;">
+             <p style="mso-line-height-alt:150.0%;">Body text with <a class="link" href="URL">linked phrase</a> continuing text.</p>
+           </td></tr>
+
+         Italic commentary (optional, max 120 chars):
+           <tr><td class="dd" align="justify" style="padding:0px 4px;text-align:justify;word-break:break-word;">
+             <p style="mso-line-height-alt:150.0%;"><i>Commentary.</i></p>
+           </td></tr>
+
+         Empty spacer row between stories:
+           <tr><td class="dd" align="left" style="padding:0px 4px;"><p style="mso-line-height-alt:150.0%;"></p></td></tr>
+    ════════════════════════════════════════════════════ -->
+
+    <tr><td>
+      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
+        <tr><td height="12px" style="line-height:1px;font-size:1px;height:12px;">&nbsp;</td></tr>
+        <tr><td>
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+              <td bgcolor="#eb5555" style="background-color:#eb5555;border-color:#eb5555;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr><td class="dd" align="justify" valign="top" style="color:#2CA156;font-weight:700;padding:0 4px;text-align:justify;">
+                    <h1 style="color:#2CA156;font-weight:700;mso-line-height-alt:100%;">💬<span style="color:#ffffff;"> THE BIG STORY</span></h1>
+                  </td></tr>
+                </table>
+              </td>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+            </tr>
+          </table>
+        </td></tr>
+        <tr><td>
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+              <td bgcolor="transparent" style="background-color:transparent;border-color:#eb5555;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  {{BIG_STORY}}
+                </table>
+              </td>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+            </tr>
+          </table>
+        </td></tr>
+      </table>
+    </td></tr>
+
+
+    <!-- ════════════════════════════════════════════════════
+         SECTION 2 — IN MAURITIUS   [#2ca156 green]
+
+         Replace {{IN_MAURITIUS}} with story rows for LS2–LS5,
+         then the SHORTS divider + label + short items.
+
+         LS2–LS5 stories: same row format as BIG_STORY.
+         Separate stories with an empty spacer row.
+
+         After LS5, add the SHORTS divider:
+
+           Green rule:
+           <tr><td align="center" valign="top" style="font-size:0;line-height:0;padding:12px 0;" class="dd">
+             <table class="j" role="none" width="98%" border="0" cellspacing="0" cellpadding="0" align="center"><tr><td>&nbsp;</td></tr></table>
+           </td></tr>
+
+           SHORTS heading:
+           <tr><td class="dd" align="justify" valign="top" style="color:#2CA156FF;font-weight:700;padding:0 4px;text-align:justify;">
+             <h2 style="color:#2CA156FF;font-weight:700;mso-line-height-alt:100%;">🗞️ SHORTS</h2>
+           </td></tr>
+
+           Each short item (SH1–SH5):
+           <tr><td class="dd" align="justify" style="padding:0 4px;text-align:justify;word-break:break-word;">
+             <p style="mso-line-height-alt:150.0%;"><a class="link" href="URL">Short headline (max 50 chars)</a> – One-sentence summary (max 120 chars).</p>
+           </td></tr>
+    ════════════════════════════════════════════════════ -->
+
+    <tr><td>
+      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
+        <tr><td height="32px" style="line-height:1px;font-size:1px;height:32px;">&nbsp;</td></tr>
+        <tr><td>
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+              <td bgcolor="#2ca156" style="background-color:#2ca156;border-color:#2ca156;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr><td class="dd" align="justify" valign="top" style="color:#2CA156;font-weight:700;padding:0 4px;text-align:justify;">
+                    <h1 style="color:#2CA156;font-weight:700;mso-line-height-alt:100%;">🇲🇺<span style="color:#ffffff;"> IN MAURITIUS</span></h1>
+                  </td></tr>
+                </table>
+              </td>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+            </tr>
+          </table>
+        </td></tr>
+        <tr><td>
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+              <td bgcolor="transparent" style="background-color:transparent;border-color:#2ca156;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  {{IN_MAURITIUS}}
+                </table>
+              </td>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+            </tr>
+          </table>
+        </td></tr>
+      </table>
+    </td></tr>
+
+
+    <!-- ════════════════════════════════════════════════════
+         SECTION 3 — BY THE NUMBERS   [#004ca3 dark blue]
+
+         Replace {{BY_THE_NUMBERS}} with 3 paragraph rows.
+         NO special number formatting — numbers are naturally
+         embedded in each paragraph. Each item is just a <p>
+         that opens with (or early mentions) the key figure,
+         then explains what it means.
+
+         Example row:
+           <tr><td class="dd" align="justify" style="padding:0px 4px;text-align:justify;word-break:break-word;">
+             <p style="mso-line-height-alt:150.0%;"><a class="link" href="URL">Key fact with number</a>, context explaining what it means and why it matters.</p>
+           </td></tr>
+
+         Separate the 3 items with empty spacer rows.
+    ════════════════════════════════════════════════════ -->
+
+    <tr><td>
+      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
+        <tr><td height="32px" style="line-height:1px;font-size:1px;height:32px;">&nbsp;</td></tr>
+        <tr><td>
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+              <td bgcolor="#004ca3" style="background-color:#004ca3;border-color:#004ca3;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr><td class="dd" align="justify" valign="top" style="color:#2CA156;font-weight:700;padding:0 4px;text-align:justify;">
+                    <h1 style="color:#2CA156;font-weight:700;mso-line-height-alt:100%;">🔢<span style="color:#ffffff;"> BY THE NUMBERS</span></h1>
+                  </td></tr>
+                </table>
+              </td>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+            </tr>
+          </table>
+        </td></tr>
+        <tr><td>
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+              <td bgcolor="transparent" style="background-color:transparent;border-color:#004ca3;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  {{BY_THE_NUMBERS}}
+                </table>
+              </td>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+            </tr>
+          </table>
+        </td></tr>
+      </table>
+    </td></tr>
+
+
+    <!-- ── Mid-newsletter subscribe nudge (dashed green) ── -->
+    <tr><td>
+      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
+        <tr><td height="32px" style="line-height:1px;font-size:1px;height:32px;">&nbsp;</td></tr>
+        <tr><td>
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+              <td bgcolor="transparent" style="background-color:transparent;border-color:#2ca156;border-style:dashed;border-width:1px;padding:4px 4px 4px 4px;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr><td class="dd" align="justify" style="padding:0 4px;text-align:justify;word-break:break-word;">
+                    <p style="mso-line-height-alt:150%;">🌟<b> Enjoying this 4minit?</b> If you found your way here but are not yet subscribed, let us help you with that:</p>
+                  </td></tr>
+                  <tr><td class="dd" align="justify" style="padding:0 4px;text-align:justify;word-break:break-word;">
+                    <p style="mso-line-height-alt:150%;font-size:0.8rem;"><a class="link" href="https://4minit.xyz">Subscribe to our FREE daily newsletter!</a></p>
+                  </td></tr>
+                </table>
+              </td>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+            </tr>
+          </table>
+        </td></tr>
+      </table>
+    </td></tr>
+
+
+    <!-- ════════════════════════════════════════════════════
+         SECTION 4 — IN OUR BACKYARD   [#2ca156 green]
+         Replace {{IN_OUR_BACKYARD}} with story rows (RS1–RS3).
+         Same format as IN_MAURITIUS stories.
+         Separate stories with empty spacer rows.
+    ════════════════════════════════════════════════════ -->
+
+    <tr><td>
+      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
+        <tr><td height="32px" style="line-height:1px;font-size:1px;height:32px;">&nbsp;</td></tr>
+        <tr><td>
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+              <td bgcolor="#2ca156" style="background-color:#2ca156;border-color:#2ca156;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr><td class="dd" align="justify" valign="top" style="color:#2CA156;font-weight:700;padding:0 4px;text-align:justify;">
+                    <h1 style="color:#2CA156;font-weight:700;mso-line-height-alt:100%;"><span style="color:#ffffff;">🌍 IN OUR BACKYARD</span></h1>
+                  </td></tr>
+                </table>
+              </td>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+            </tr>
+          </table>
+        </td></tr>
+        <tr><td>
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+              <td bgcolor="transparent" style="background-color:transparent;border-color:#2ca156;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  {{IN_OUR_BACKYARD}}
+                </table>
+              </td>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+            </tr>
+          </table>
+        </td></tr>
+      </table>
+    </td></tr>
+
+
+    <!-- ════════════════════════════════════════════════════
+         SECTION 5 — AROUND THE WORLD   [#2ca156 green]
+         Replace {{AROUND_THE_WORLD}} with story rows (GS1–GS3).
+         Same format as IN_MAURITIUS stories.
+    ════════════════════════════════════════════════════ -->
+
+    <tr><td>
+      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
+        <tr><td height="32px" style="line-height:1px;font-size:1px;height:32px;">&nbsp;</td></tr>
+        <tr><td>
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+              <td bgcolor="#2ca156" style="background-color:#2ca156;border-color:#2ca156;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr><td class="dd" align="justify" valign="top" style="color:#2CA156;font-weight:700;padding:0 4px;text-align:justify;">
+                    <h1 style="color:#2CA156;font-weight:700;mso-line-height-alt:100%;"><span style="color:#ffffff;">🗺️ AROUND THE WORLD</span></h1>
+                  </td></tr>
+                </table>
+              </td>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+            </tr>
+          </table>
+        </td></tr>
+        <tr><td>
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+              <td bgcolor="transparent" style="background-color:transparent;border-color:#2ca156;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  {{AROUND_THE_WORLD}}
+                </table>
+              </td>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+            </tr>
+          </table>
+        </td></tr>
+      </table>
+    </td></tr>
+
+
+    <!-- ════════════════════════════════════════════════════
+         SECTION 6 — THE DEEP END   [#333 charcoal]
+         Replace {{THE_DEEP_END}} with DE1 (and DE2 if injected).
+         Same row format as other stories.
+         Use <b> for title, then regular <p> for content.
+    ════════════════════════════════════════════════════ -->
+
+    <tr><td>
+      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
+        <tr><td height="32px" style="line-height:1px;font-size:1px;height:32px;">&nbsp;</td></tr>
+        <tr><td>
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+              <td bgcolor="#333" style="background-color:#333;border-color:#333;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr><td class="dd" align="justify" valign="top" style="color:#2CA156;font-weight:700;padding:0 4px;text-align:justify;">
+                    <h1 style="color:#2CA156;font-weight:700;mso-line-height-alt:100%;">🧠<span style="color:#ffffff;"> THE DEEP END</span></h1>
+                  </td></tr>
+                </table>
+              </td>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+            </tr>
+          </table>
+        </td></tr>
+        <tr><td>
+          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+              <td bgcolor="transparent" style="background-color:transparent;border-color:#333;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  {{THE_DEEP_END}}
+                </table>
+              </td>
+              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
+            </tr>
+          </table>
+        </td></tr>
+      </table>
+    </td></tr>
+
+
+  </table>
+  </td></tr>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       FOOTER — white, rounded bottom corners
+  ══════════════════════════════════════════════════════ -->
+  <tr><td align="center" valign="top">
+  <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr><td></tr><tr>
+      <td class="b" align="center" valign="top" bgcolor="#FFFFFF"
+          style="padding:16px 0 16px 0;border-style:solid;border-width:0 0 0 0;border-color:#2CA156;border-bottom-left-radius:15px;border-bottom-right-radius:15px;">
+        <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+
+          <!-- CTA line -->
+          <tr><td>
+            <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
+              <tr><td height="20px" style="line-height:1px;font-size:1px;height:20px;">&nbsp;</td></tr>
+              <tr><td bgcolor="transparent" style="background-color:transparent;padding:0;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr><td class="dd" align="center" valign="top" style="color:#333333;font-weight:400;padding:0 4px;text-align:center;">
+                    <h4 style="color:#333333;font-weight:400;mso-line-height-alt:200%;"><a class="link" href="https://4minit.xyz">Subscribe for FREE</a> daily news!<br>Share this newsletter with the people you love ❤️<br>Would you like to join our team or report any mistakes? <a class="link" href="mailto:hello@4minit.xyz">Let us know!</a></h4>
+                  </td></tr>
+                </table>
+              </td></tr>
+            </table>
+          </td></tr>
+
+          <!-- Sign-off -->
+          <tr><td>
+            <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
+              <tr><td height="24px" style="line-height:1px;font-size:1px;height:24px;">&nbsp;</td></tr>
+              <tr><td bgcolor="transparent" style="background-color:transparent;padding:0;">
+                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr><td class="dd" align="center" valign="top" style="color:#333333;font-weight:400;padding:0 4px;text-align:center;">
+                    <h4><b>Merci, a demain! 👋</b></h4>
+                  </td></tr>
+                </table>
+              </td></tr>
+              <tr><td height="8px" style="line-height:1px;font-size:1px;height:8px;">&nbsp;</td></tr>
+            </table>
+          </td></tr>
+
+          <!-- Green divider -->
+          <tr><td align="center" valign="top" style="font-size:0;line-height:0;padding:12px 0;" class="dd">
+            <table class="j" role="none" width="98%" border="0" cellspacing="0" cellpadding="0" align="center">
+              <tr><td>&nbsp;</td></tr>
+            </table>
+          </td></tr>
+
+          <!-- Unsubscribe + copyright -->
+          <tr><td class="w" align="center" valign="top" style="padding:5px 5px 5px 5px;">
+            <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+              <tr><td align="center" valign="top">
+                <p style="font-family:'Helvetica',Arial,sans-serif;color:#555555 !important;">Update your email preferences or unsubscribe <a style="text-decoration:underline;text-decoration-color:#555555 !important;color:#555555 !important;" href="{{unsubscribeLink}}">here</a></p>
+                <p class="copyright" style="font-family:'Helvetica',Arial,sans-serif;color:#555555 !important;">© 2026 4minit | made in moris 🇲🇺</p>
+                <p style="font-family:'Helvetica',Arial,sans-serif;color:#555555 !important;">4minit<br>Route Royale, Mauritius</p>
+              </td></tr>
+            </table>
+          </td></tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+  </td></tr>
+
+
+  </table>
+  </td></tr>
+  </table>
+
+</td></tr>
+</table>
+
+</div>
 </body>
 </html>
