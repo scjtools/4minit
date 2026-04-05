@@ -1,0 +1,13 @@
+{
+  "name": "4minit",
+  "version": "1.0.0",
+  "description": "4minit — Mauritius Morning Brief",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "pipeline:pre":  "node pipeline.js --pre",
+    "pipeline:post": "node pipeline.js --post"
+  }
+}
