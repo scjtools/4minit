@@ -177,7 +177,9 @@ function updateArchive() {
     const [dd, mm, yyyy] = f.replace('.html', '').split('-');
     const dt    = new Date(`${yyyy}-${mm}-${dd}T12:00:00Z`);
     const label = `${DAYS[dt.getUTCDay()]}, ${parseInt(dd)} ${MONTHS[dt.getUTCMonth()]} ${yyyy}`;
-    return `      <li><a href="/newsletters/${f}"><span>${label}</span><span class="arrow">→</span></a></li>`;
+    const mon   = MONTHS[dt.getUTCMonth()].slice(0, 3).toUpperCase();
+    const badge = `${mon} ${parseInt(dd)}`;
+    return `      <li><a href="/newsletters/${f}"><span class="meta"><span class="date-badge">${badge}</span><span>${label}</span></span><span class="arrow">→</span></a></li>`;
   }).join('\n');
 
   const html = `<!DOCTYPE html>
@@ -187,68 +189,80 @@ function updateArchive() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Archive — 4minit</title>
   <meta name="description" content="Every edition of the 4minit Mauritius Morning Brief, archived.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Merriweather+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/002%20Branding/Icon_v02_Transparent.png">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --black: #030712; --yellow: #DFD150; --white: #ffffff;
-      --gray-100: #F3F4F6; --gray-200: #E5E7EB; --gray-500: #6B7280;
-      --serif: 'Merriweather', Georgia, serif;
-      --sans:  'Merriweather Sans', Helvetica, Arial, sans-serif;
-      --radius: 6px;
+      --green:   #2CA156;
+      --charcoal:#333333;
+      --dark:    #2d2d2d;
+      --white:   #ffffff;
+      --offwhite:#f7f7f7;
+      --gray-200:#E5E7EB;
+      --gray-500:#6B7280;
+      --radius:  6px;
+      --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
-    html, body { height: 100%; font-family: var(--sans); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
-    nav { background: var(--black); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 60px; }
-    .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 900; color: var(--white); letter-spacing: 2px; text-decoration: none; }
-    .nav-logo span { color: var(--yellow); }
-    nav a.nav-link { font-family: var(--sans); font-size: 13px; font-weight: 500; color: #9CA3AF; text-decoration: none; margin-left: 24px; transition: color .15s; }
-    nav a.nav-link:hover { color: var(--yellow); }
-    .page-hero { background: var(--black); padding: 48px 40px 52px; text-align: center; }
-    .page-hero h1 { font-family: var(--serif); font-size: 30px; font-weight: 900; color: var(--white); margin-bottom: 10px; }
-    .page-hero p  { font-family: var(--sans); font-size: 15px; color: #9CA3AF; }
-    .container { max-width: 680px; margin: 0 auto; padding: 44px 20px 60px; }
+    html, body { height: 100%; font-family: var(--sans); background: var(--offwhite); color: var(--charcoal); -webkit-font-smoothing: antialiased; }
+    nav { background: var(--dark); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; border-bottom: 3px solid var(--green); }
+    .nav-logo img { height: 36px; width: auto; display: block; }
+    .nav-links a { font-size: 13px; font-weight: 600; color: #aaaaaa; text-decoration: none; margin-left: 28px; letter-spacing: 0.5px; text-transform: uppercase; transition: color .15s; }
+    .nav-links a:hover { color: var(--green); }
+    .page-hero { background: var(--green); padding: 40px 40px 44px; text-align: center; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.04) 60px, rgba(255,255,255,0.04) 61px); pointer-events: none; }
+    .page-hero-inner { position: relative; z-index: 1; }
+    .page-hero-logo { margin: 0 auto 16px; width: 220px; }
+    .page-hero-logo img { width: 100%; height: auto; display: block; }
+    .page-hero h1 { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 6px; }
+    .page-hero p { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+    .container { max-width: 680px; margin: 0 auto; padding: 36px 20px 64px; }
+    .list-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); border-top: 2px solid var(--green); padding-top: 6px; margin-bottom: 20px; display: inline-block; }
     ul { list-style: none; }
-    li { margin-bottom: 10px; }
-    li a {
-      display: flex; align-items: center; justify-content: space-between;
-      background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius);
-      padding: 16px 20px; font-size: 15px; font-weight: 600; color: var(--black);
-      text-decoration: none; transition: border-color .15s, background .15s;
-    }
-    li a:hover { border-color: var(--yellow); background: #FFFDE7; }
-    li a .arrow { font-size: 16px; color: var(--gray-500); flex-shrink: 0; margin-left: 12px; }
-    li a:hover .arrow { color: var(--black); }
-    .empty { text-align: center; color: var(--gray-500); padding: 60px 0; font-size: 15px; font-family: var(--sans); }
-    footer { background: var(--black); height: 52px; display: flex; align-items: center; justify-content: center; gap: 20px; }
-    footer a { font-family: var(--sans); font-size: 12px; color: #6B7280; text-decoration: none; transition: color .15s; }
-    footer a:hover { color: var(--yellow); }
-    footer span { color: #374151; font-size: 12px; }
+    li { margin-bottom: 8px; }
+    li a { display: flex; align-items: center; justify-content: space-between; background: var(--white); border: 1px solid var(--gray-200); border-left: 3px solid transparent; border-radius: var(--radius); padding: 16px 20px; font-size: 15px; font-weight: 600; color: var(--charcoal); text-decoration: none; transition: border-left-color .15s, background .15s, transform .1s; }
+    li a:hover { border-left-color: var(--green); background: #f0fdf4; transform: translateX(2px); }
+    li a .meta { display: flex; align-items: center; gap: 12px; }
+    li a .date-badge { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: var(--white); background: var(--green); border-radius: 4px; padding: 3px 8px; flex-shrink: 0; }
+    li a .arrow { font-size: 16px; color: var(--gray-500); flex-shrink: 0; }
+    li a:hover .arrow { color: var(--green); }
+    .empty { text-align: center; color: var(--gray-500); padding: 60px 0; font-size: 15px; }
+    .empty strong { display: block; font-size: 32px; margin-bottom: 12px; }
+    footer { background: var(--dark); height: 56px; display: flex; align-items: center; justify-content: center; gap: 20px; border-top: 3px solid var(--green); }
+    footer a { font-size: 12px; color: #888; text-decoration: none; transition: color .15s; }
+    footer a:hover { color: var(--green); }
+    footer span { color: #444; font-size: 12px; }
     @media (max-width: 480px) {
       nav { padding: 0 20px; }
-      .page-hero { padding: 36px 20px 40px; }
-      .page-hero h1 { font-size: 24px; }
+      .nav-logo img { height: 28px; }
+      .page-hero { padding: 32px 20px 36px; }
+      .page-hero-logo { width: 160px; }
+      footer { height: auto; padding: 16px 20px; flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
 <body>
   <nav>
-    <a class="nav-logo" href="/">4<span>minit</span></a>
-    <div><a class="nav-link" href="/">Subscribe</a></div>
+    <a class="nav-logo" href="/"><img src="/002%20Branding/Header_v02_Transparent.png" alt="4minit Daily News"></a>
+    <div class="nav-links"><a href="/">Subscribe</a></div>
   </nav>
   <div class="page-hero">
-    <h1>Past Editions</h1>
-    <p>Every morning, Mauritius in 4 minutes.</p>
+    <div class="page-hero-inner">
+      <div class="page-hero-logo"><img src="/002%20Branding/Header_v02_Transparent.png" alt="4minit Daily News"></div>
+      <h1>Past Editions</h1>
+      <p>Every morning, Mauritius in 4 minutes.</p>
+    </div>
   </div>
   <div class="container">
     ${files.length === 0
-      ? '<p class="empty">No newsletters published yet. Check back soon.</p>'
-      : `<ul>\n${rows}\n    </ul>`}
+      ? '<p class="empty"><strong>📭</strong>No newsletters published yet. Check back soon.</p>'
+      : `<p class="list-label">All editions</p>\n    <ul>\n${rows}\n    </ul>`}
   </div>
   <footer>
     <a href="/">4minit.xyz</a>
-    <span>·</span>
-    <a href="/">Subscribe</a>
+    <span>&middot;</span>
+    <a href="/">Subscribe free</a>
+    <span>&middot;</span>
+    <span style="color:#555;">made in moris 🇲🇺</span>
   </footer>
 </body>
 </html>`;
