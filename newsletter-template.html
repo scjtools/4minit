@@ -5,322 +5,390 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="x-apple-disable-message-reformatting">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!--
-    PLACEHOLDER: replace {{NEWSLETTER_TITLE}} with the LS1 headline (plain text, no tags).
-    This becomes both the <title> and the email subject line.
-  -->
   <title>{{NEWSLETTER_TITLE}} — 4minit</title>
+  <!--[if !mso]><!-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Merriweather+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!--<![endif]-->
   <style>
     /* ── Reset ── */
     body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
-    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
-    body { margin: 0 !important; padding: 0 !important; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; display: block; }
+    body { margin: 0 !important; padding: 0 !important; width: 100% !important; }
 
-    /* ── Base typography ── */
-    body {
-      background-color: #f6f2ec;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      line-height: 1.65;
-      color: #1a1a2e;
+    /* ── Outer wrapper ── */
+    .outer {
+      width: 100%;
+      background-color: #F3F4F6;
     }
-
-    /* ── Layout ── */
-    .outer  { width: 100%; background-color: #f6f2ec; padding: 24px 10px; }
-    .card   { max-width: 600px; margin: 0 auto; background: #ffffff;
-              border-radius: 10px; overflow: hidden;
-              box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+    .inner {
+      max-width: 620px;
+      margin: 0 auto;
+      background-color: #ffffff;
+    }
 
     /* ── Header ── */
-    .hd-bar {
-      background-color: #1a1a2e;
-      padding: 28px 36px;
+    .hd {
+      background-color: #030712;
+      padding: 28px 40px 24px;
       text-align: center;
     }
-    .hd-bar .logo {
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      font-size: 36px;
-      font-weight: bold;
+    .hd-logo {
+      font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+      font-size: 30px;
+      font-weight: 900;
       color: #ffffff;
       letter-spacing: 3px;
       text-decoration: none;
+      display: inline-block;
+      line-height: 1;
     }
-    .hd-bar .tagline {
+    .hd-logo span { color: #DFD150; }
+    .hd-tagline {
+      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
       font-size: 11px;
-      color: #8888aa;
-      letter-spacing: 2px;
+      font-weight: 500;
+      color: #9CA3AF;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      margin-top: 6px;
+      margin-top: 8px;
     }
 
     /* ── Date bar ── */
     .date-bar {
-      background-color: #e05c2a;
-      padding: 9px 36px;
+      background-color: #DFD150;
+      padding: 8px 40px;
       text-align: center;
-      font-size: 12px;
+      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
+      font-size: 11px;
       font-weight: 700;
-      color: #ffffff;
-      letter-spacing: 0.8px;
+      color: #030712;
+      letter-spacing: 2px;
       text-transform: uppercase;
     }
 
     /* ── Subtitle strip ── */
     .subtitle-strip {
-      background: #f6f2ec;
-      padding: 16px 36px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #E5E7EB;
+      padding: 16px 40px;
+      font-family: 'Merriweather', Georgia, serif;
       font-size: 13px;
-      color: #666;
-      line-height: 1.55;
-      text-align: center;
       font-style: italic;
+      color: #6B7280;
+      line-height: 1.6;
+      text-align: center;
     }
 
-    /* ── Body padding ── */
-    .body-pad { padding: 4px 36px 40px; }
+    /* ── Body ── */
+    .body { padding: 0 40px 40px; }
 
     /* ── Section label ── */
     .section-label {
+      margin-top: 36px;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DFD150;
+      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: #e05c2a;
-      border-bottom: 2px solid #e05c2a;
-      padding-bottom: 8px;
-      margin: 32px 0 18px;
+      color: #030712;
     }
 
     /* ── Story headlines ── */
     h2.story-headline {
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      font-size: 21px;
-      font-weight: bold;
-      color: #1a1a2e;
-      margin: 0 0 10px;
+      font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: #030712;
+      margin: 0 0 12px;
       line-height: 1.3;
     }
     h3.story-headline {
-      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
       font-size: 17px;
-      font-weight: bold;
-      color: #1a1a2e;
-      margin: 0 0 8px;
+      font-weight: 700;
+      color: #030712;
+      margin: 0 0 10px;
       line-height: 1.35;
     }
 
-    /* ── Story wrappers ── */
-    .story { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #ede8e0; }
-    .story:last-child { border-bottom: none; padding-bottom: 0; }
-    .story p { margin: 0 0 10px; }
+    /* ── Story blocks ── */
+    .story {
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    .story:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+    .story p {
+      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #030712;
+      margin: 0 0 10px;
+    }
     .story p:last-child { margin-bottom: 0; }
-    .story em { color: #666; font-style: italic; }
+    .story p em {
+      font-family: 'Merriweather', Georgia, serif;
+      font-style: italic;
+      color: #6B7280;
+      font-size: 14px;
+    }
+    .story a { color: #030712; text-decoration: underline; text-decoration-color: #DFD150; text-underline-offset: 2px; }
 
     /* ── Big Story ── */
-    .big-story { margin-bottom: 0; }
-    .big-story h2.story-headline { font-size: 23px; }
-    .big-story p { font-size: 15px; line-height: 1.7; margin: 0 0 12px; }
+    .big-story h2.story-headline { font-size: 24px; }
+    .big-story p { font-size: 15px; line-height: 1.75; margin-bottom: 12px; }
 
     /* ── Shorts ── */
     .shorts-label {
+      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #aaa;
-      margin: 24px 0 12px;
+      color: #9CA3AF;
+      margin: 24px 0 10px;
     }
     .short-item {
+      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
       font-size: 14px;
-      line-height: 1.55;
-      padding: 10px 0;
-      border-top: 1px solid #ede8e0;
-      color: #333;
+      line-height: 1.6;
+      color: #374151;
+      padding: 9px 0;
+      border-top: 1px solid #E5E7EB;
     }
-    .short-item strong { color: #1a1a2e; }
+    .short-item strong {
+      color: #030712;
+      font-weight: 600;
+    }
 
     /* ── By the Numbers ── */
     .number-item {
-      background: #f6f2ec;
-      border-left: 4px solid #e05c2a;
+      background-color: #FEFCE8;
+      border-left: 3px solid #DFD150;
       border-radius: 0 6px 6px 0;
-      padding: 14px 16px;
-      margin-bottom: 14px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
     }
     .number-item:last-child { margin-bottom: 0; }
     .number-lead {
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      font-size: 22px;
-      font-weight: bold;
-      color: #e05c2a;
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: #030712;
       margin-bottom: 6px;
-      line-height: 1.2;
+      line-height: 1.15;
     }
-    .number-item p { font-size: 14px; line-height: 1.6; margin: 0; color: #333; }
+    .number-item p {
+      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      color: #374151;
+      margin: 0;
+    }
 
     /* ── Deep End ── */
     .deep-end-item {
-      background: #eef2ff;
-      border-radius: 8px;
-      padding: 18px 20px;
-      margin-bottom: 14px;
+      background-color: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      padding: 20px 22px;
+      margin-bottom: 12px;
     }
     .deep-end-item:last-child { margin-bottom: 0; }
-    .deep-end-item p { font-size: 14px; line-height: 1.65; margin: 0 0 8px; color: #333; }
-    .deep-end-item p:last-child { margin-bottom: 0; }
-    .deep-end-item em { color: #666; }
-
-    /* ── Links ── */
-    a { color: #1a68e0; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    .deep-end-item p {
+      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #374151;
+      margin: 0 0 8px;
+    }
+    .deep-end-item p:last-child { margin: 0; }
+    .deep-end-item p em { font-family: 'Merriweather', Georgia, serif; font-style: italic; color: #6B7280; }
+    .deep-end-item a { color: #030712; text-decoration: underline; text-decoration-color: #DFD150; }
 
     /* ── Footer ── */
     .footer {
-      background-color: #1a1a2e;
-      padding: 24px 36px;
+      background-color: #030712;
+      padding: 28px 40px;
       text-align: center;
-      font-size: 12px;
-      color: #555;
-      line-height: 1.8;
     }
-    .footer a { color: #e05c2a; text-decoration: none; }
-    .footer .unsubscribe { color: #555; font-size: 11px; }
+    .footer-logo {
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: 18px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 2px;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .footer-logo span { color: #DFD150; }
+    .footer p {
+      font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      color: #6B7280;
+      margin: 0 0 6px;
+      line-height: 1.6;
+    }
+    .footer p:last-child { margin: 0; }
+    .footer a { color: #9CA3AF; text-decoration: none; }
+    .footer a:hover { color: #DFD150; }
+    .footer .unsub { font-size: 11px; color: #4B5563; }
+    .footer .unsub a { color: #6B7280; }
+
+    /* ── Links in content ── */
+    a { color: #030712; }
 
     /* ── Mobile ── */
-    @media only screen and (max-width: 620px) {
-      .outer { padding: 0 !important; }
-      .card  { border-radius: 0 !important; box-shadow: none !important; }
-      .hd-bar, .date-bar, .subtitle-strip, .body-pad, .footer { padding-left: 20px !important; padding-right: 20px !important; }
-      h2.story-headline { font-size: 19px !important; }
-      .number-lead { font-size: 19px !important; }
+    @media only screen and (max-width: 640px) {
+      .inner { width: 100% !important; }
+      .hd, .date-bar, .subtitle-strip, .body, .footer {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+      h2.story-headline { font-size: 20px !important; }
+      .big-story h2.story-headline { font-size: 21px !important; }
+      .number-lead { font-size: 21px !important; }
     }
   </style>
 </head>
 <body>
 
-<!-- Preheader text (hidden, shows in email preview) -->
-<div style="display:none;max-height:0;overflow:hidden;font-size:1px;color:#f6f2ec;">
+<!-- Preheader (hidden preview text in email clients) -->
+<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#F3F4F6;">
 {{NEWSLETTER_SUBTITLE}}
 </div>
 
 <div class="outer">
-  <div class="card">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr><td align="center" style="padding: 24px 10px;">
+    <table class="inner" width="620" cellpadding="0" cellspacing="0" border="0" style="max-width:620px;">
 
-    <!-- ── HEADER ── -->
-    <div class="hd-bar">
-      <div><a class="logo" href="https://4minit.xyz">4minit</a></div>
-      <div class="tagline">Mauritius Morning Brief</div>
-    </div>
+      <!-- ── HEADER ── -->
+      <tr>
+        <td class="hd">
+          <div class="hd-logo">4<span>minit</span></div>
+          <div class="hd-tagline">Mauritius Morning Brief</div>
+        </td>
+      </tr>
 
-    <!-- ── DATE BAR ── -->
-    <!--
-      PLACEHOLDER: replace {{NEWSLETTER_DATE_LONG}} with the long date string,
-      e.g. "Saturday 5 April 2026"
-    -->
-    <div class="date-bar">{{NEWSLETTER_DATE_LONG}}</div>
+      <!-- ── DATE BAR ── -->
+      <!--
+        Replace {{NEWSLETTER_DATE_LONG}} with e.g. "Saturday 5 April 2026"
+      -->
+      <tr>
+        <td class="date-bar">{{NEWSLETTER_DATE_LONG}}</td>
+      </tr>
 
-    <!-- ── SUBTITLE ── -->
-    <!--
-      PLACEHOLDER: replace {{NEWSLETTER_SUBTITLE}} with the subtitle line,
-      format: "LS2 Headline. RS1 Headline. GS1 Headline."
-    -->
-    <div class="subtitle-strip">{{NEWSLETTER_SUBTITLE}}</div>
+      <!-- ── SUBTITLE ── -->
+      <!--
+        Replace {{NEWSLETTER_SUBTITLE}} with "LS2 Headline. RS1 Headline. GS1 Headline."
+      -->
+      <tr>
+        <td class="subtitle-strip">{{NEWSLETTER_SUBTITLE}}</td>
+      </tr>
 
-    <!-- ── BODY ── -->
-    <div class="body-pad">
-
-      <!-- ═══════════════════════════════════════════════════
-           SECTION 1 — THE BIG STORY
-           Replace {{BIG_STORY}} with:
-             <div class="story big-story">
-               <h2 class="story-headline">LS1 Headline</h2>
-               <p>First paragraph (800-1200 chars total, 2-3 paragraphs).</p>
-               <p>Second paragraph.</p>
-               <p><em>Optional italic commentary (max 120 chars).</em></p>
-             </div>
+      <!-- ══════════════════════════════════════════════════════
+           BODY
       ══════════════════════════════════════════════════════ -->
-      <div class="section-label">The Big Story</div>
-      {{BIG_STORY}}
+      <tr>
+        <td class="body">
 
-      <!-- ═══════════════════════════════════════════════════
-           SECTION 2 — IN MAURITIUS
-           Replace {{IN_MAURITIUS}} with LS2–LS5 stories + Shorts.
+          <!-- ─ SECTION 1: THE BIG STORY ─
+            Replace {{BIG_STORY}} with:
+              <div class="story big-story">
+                <h2 class="story-headline">LS1 Headline</h2>
+                <p>Paragraph. (2-3 paragraphs, 800-1200 chars total)</p>
+                <p>Second paragraph.</p>
+                <p><em>Optional italic commentary (max 120 chars).</em></p>
+              </div>
+          -->
+          <div class="section-label">The Big Story</div>
+          {{BIG_STORY}}
 
-           Each story (LS2-LS5):
-             <div class="story">
-               <h3 class="story-headline">Headline</h3>
-               <p>Content (LS2: 600-800 chars; LS3: 400-800; LS4/LS5: max 400).</p>
-               <p><em>Optional italic commentary.</em></p>
-             </div>
+          <!-- ─ SECTION 2: IN MAURITIUS ─
+            Replace {{IN_MAURITIUS}} with LS2–LS5 stories then Shorts.
 
-           Shorts subsection (SH1-SH5):
-             <div class="shorts-label">Shorts</div>
-             <div class="short-item"><strong>Headline (max 50 chars)</strong> — One sentence (max 120 chars).</div>
-             [repeat for each short]
-      ══════════════════════════════════════════════════════ -->
-      <div class="section-label">In Mauritius</div>
-      {{IN_MAURITIUS}}
+            Each story (LS2-LS5):
+              <div class="story">
+                <h3 class="story-headline">Headline</h3>
+                <p>Content. Max 3 sentences per paragraph.</p>
+                <p><em>Optional italic commentary.</em></p>
+              </div>
 
-      <!-- ═══════════════════════════════════════════════════
-           SECTION 3 — BY THE NUMBERS
-           Replace {{BY_THE_NUMBERS}} with 3 number items:
-             <div class="number-item">
-               <div class="number-lead">NUMBER descriptor</div>
-               <p>Mini story (max 400 chars, max 4 sentences).</p>
-             </div>
-             [repeat x3]
-      ══════════════════════════════════════════════════════ -->
-      <div class="section-label">By The Numbers</div>
-      {{BY_THE_NUMBERS}}
+            Shorts subsection after LS5:
+              <div class="shorts-label">Shorts</div>
+              <div class="short-item"><strong>Headline (max 50 chars)</strong> — One sentence.</div>
+              [SH2–SH5 same format]
+          -->
+          <div class="section-label">In Mauritius</div>
+          {{IN_MAURITIUS}}
 
-      <!-- ═══════════════════════════════════════════════════
-           SECTION 4 — IN OUR BACKYARD
-           Replace {{IN_OUR_BACKYARD}} with RS1-RS3 stories
-           (same format as IN_MAURITIUS stories).
-      ══════════════════════════════════════════════════════ -->
-      <div class="section-label">In Our Backyard</div>
-      {{IN_OUR_BACKYARD}}
+          <!-- ─ SECTION 3: BY THE NUMBERS ─
+            Replace {{BY_THE_NUMBERS}} with 3 items:
+              <div class="number-item">
+                <div class="number-lead">NUMBER descriptor</div>
+                <p>Mini story (max 400 chars, max 4 sentences).</p>
+              </div>
+              [repeat ×3]
+          -->
+          <div class="section-label">By The Numbers</div>
+          {{BY_THE_NUMBERS}}
 
-      <!-- ═══════════════════════════════════════════════════
-           SECTION 5 — AROUND THE WORLD
-           Replace {{AROUND_THE_WORLD}} with GS1-GS3 stories
-           (same format as IN_MAURITIUS stories).
-      ══════════════════════════════════════════════════════ -->
-      <div class="section-label">Around The World</div>
-      {{AROUND_THE_WORLD}}
+          <!-- ─ SECTION 4: IN OUR BACKYARD ─
+            Replace {{IN_OUR_BACKYARD}} with RS1–RS3 (same format as LS2–LS5 stories).
+          -->
+          <div class="section-label">In Our Backyard</div>
+          {{IN_OUR_BACKYARD}}
 
-      <!-- ═══════════════════════════════════════════════════
-           SECTION 6 — THE DEEP END
-           Replace {{THE_DEEP_END}} with DE1 (and DE2 if injected):
-             <div class="deep-end-item">
-               <h3 class="story-headline">Title</h3>
-               <p>Up to 2 paragraphs (max 500 chars total).</p>
-               <p><em>Optional italic commentary.</em></p>
-             </div>
-      ══════════════════════════════════════════════════════ -->
-      <div class="section-label">The Deep End</div>
-      {{THE_DEEP_END}}
+          <!-- ─ SECTION 5: AROUND THE WORLD ─
+            Replace {{AROUND_THE_WORLD}} with GS1–GS3 (same format as LS2–LS5 stories).
+          -->
+          <div class="section-label">Around The World</div>
+          {{AROUND_THE_WORLD}}
 
-    </div><!-- /body-pad -->
+          <!-- ─ SECTION 6: THE DEEP END ─
+            Replace {{THE_DEEP_END}} with DE1 (and DE2 if injected item lands here):
+              <div class="deep-end-item">
+                <h3 class="story-headline">Title</h3>
+                <p>Content. Up to 2 paragraphs, max 500 chars total.</p>
+                <p><em>Optional italic commentary.</em></p>
+              </div>
+          -->
+          <div class="section-label">The Deep End</div>
+          {{THE_DEEP_END}}
 
-    <!-- ── FOOTER ── -->
-    <div class="footer">
-      <p>
-        <a href="https://4minit.xyz">4minit.xyz</a>
-        &nbsp;·&nbsp;
-        <a href="https://4minit.xyz/newsletters.html">Archive</a>
-        &nbsp;·&nbsp;
-        <a href="https://4minit.xyz">Subscribe</a>
-      </p>
-      <p style="margin-top:10px;" class="unsubscribe">
-        You're receiving this because you subscribed at 4minit.xyz.<br>
-        <a href="{{unsubscribeLink}}" style="color:#777;">Unsubscribe</a>
-      </p>
-    </div>
+        </td>
+      </tr>
 
-  </div><!-- /card -->
-</div><!-- /outer -->
+      <!-- ── FOOTER ── -->
+      <tr>
+        <td class="footer">
+          <div><a class="footer-logo" href="https://4minit.xyz">4<span>minit</span></a></div>
+          <p>
+            <a href="https://4minit.xyz">4minit.xyz</a>
+            &nbsp;·&nbsp;
+            <a href="https://4minit.xyz/newsletters.html">Archive</a>
+            &nbsp;·&nbsp;
+            <a href="https://4minit.xyz">Subscribe</a>
+          </p>
+          <p class="unsub" style="margin-top:14px;">
+            You're receiving this because you subscribed at 4minit.xyz.<br>
+            <a href="{{unsubscribeLink}}">Unsubscribe</a>
+          </p>
+        </td>
+      </tr>
+
+    </table>
+    </td></tr>
+  </table>
+</div>
 
 </body>
 </html>

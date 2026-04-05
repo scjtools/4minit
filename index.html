@@ -3,117 +3,127 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4minit — Mauritius Morning Brief</title>
-  <meta name="description" content="Mauritius in 4 minutes. A free daily newsletter for Mauritian professionals — local news, what's happening in the region, and what matters globally.">
-  <meta property="og:title" content="4minit — Mauritius Morning Brief">
-  <meta property="og:description" content="Mauritius in 4 minutes. Free daily newsletter delivered every morning.">
+  <title>4minit — Your daily Mauritius brief</title>
+  <meta name="description" content="Mauritius in 4 minutes. A free daily newsletter for Mauritian professionals — local news, the region, and the world. Every morning before 7 AM.">
+  <meta property="og:title" content="4minit — Your daily Mauritius brief">
+  <meta property="og:description" content="Mauritius in 4 minutes. Free. Every morning.">
   <meta property="og:type" content="website">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Merriweather+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:  #1a1a2e;
-      --orange: #e05c2a;
-      --cream: #f8f5f0;
-      --white: #ffffff;
-      --text:  #1a1a2e;
-      --muted: #666;
+      --black:  #030712;
+      --yellow: #DFD150;
+      --white:  #ffffff;
+      --gray-50:  #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --radius: 6px;
+      --serif: 'Merriweather', Georgia, 'Times New Roman', serif;
+      --sans:  'Merriweather Sans', Helvetica, Arial, sans-serif;
     }
 
     html, body {
       height: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-      background: var(--cream);
-      color: var(--text);
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--black);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Layout ── */
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      background: var(--navy);
-      padding: 20px 32px;
+    /* ── Navigation ── */
+    nav {
+      background: var(--black);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
     }
-    .logo {
-      font-family: Georgia, serif;
+    .nav-logo {
+      font-family: var(--serif);
       font-size: 22px;
-      font-weight: bold;
+      font-weight: 900;
       color: var(--white);
       letter-spacing: 2px;
       text-decoration: none;
+      line-height: 1;
     }
-    header nav a {
+    .nav-logo span { color: var(--yellow); }
+    .nav-links a {
+      font-family: var(--sans);
       font-size: 13px;
-      color: #8888aa;
+      font-weight: 500;
+      color: #9CA3AF;
       text-decoration: none;
-      margin-left: 20px;
+      margin-left: 24px;
       transition: color .15s;
     }
-    header nav a:hover { color: var(--orange); }
+    .nav-links a:hover { color: var(--yellow); }
 
     /* ── Hero ── */
     .hero {
-      flex: 1;
+      min-height: calc(100vh - 60px - 52px); /* viewport minus nav and footer */
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 60px 20px;
+      background: var(--white);
     }
     .hero-inner {
-      max-width: 540px;
+      max-width: 560px;
       width: 100%;
       text-align: center;
     }
 
+    /* ── Brand mark ── */
     .brand-mark {
       display: inline-block;
-      background: var(--navy);
-      color: var(--white);
-      font-family: Georgia, serif;
+      background: var(--black);
+      font-family: var(--serif);
       font-size: 52px;
-      font-weight: bold;
+      font-weight: 900;
+      color: var(--white);
       letter-spacing: 4px;
-      padding: 16px 32px 12px;
-      border-radius: 10px;
-      margin-bottom: 24px;
+      padding: 14px 36px 12px;
+      border-radius: var(--radius);
       line-height: 1;
+      margin-bottom: 28px;
     }
-    .brand-mark span {
-      color: var(--orange);
-    }
+    .brand-mark span { color: var(--yellow); }
 
-    .tagline {
-      font-family: Georgia, serif;
-      font-size: 22px;
-      color: var(--navy);
-      margin-bottom: 12px;
-      line-height: 1.35;
+    /* ── Headlines ── */
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--black);
+      line-height: 1.3;
+      margin-bottom: 14px;
     }
-
-    .sub-tagline {
-      font-size: 15px;
-      color: var(--muted);
+    .hero-subtext {
+      font-family: var(--sans);
+      font-size: 16px;
+      color: var(--gray-500);
       line-height: 1.65;
       margin-bottom: 36px;
-      max-width: 420px;
+      max-width: 440px;
       margin-left: auto;
       margin-right: auto;
     }
 
     /* ── Subscribe card ── */
     .subscribe-card {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 32px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.09);
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 28px;
     }
 
     .form-row {
@@ -122,145 +132,153 @@
     }
     .email-input {
       flex: 1;
-      font-size: 15px;
-      padding: 13px 16px;
-      border: 1.5px solid #ddd;
-      border-radius: 8px;
-      outline: none;
-      color: var(--text);
-      background: var(--cream);
-      transition: border-color .2s;
       min-width: 0;
+      font-family: var(--sans);
+      font-size: 15px;
+      padding: 12px 16px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      background: var(--white);
+      color: var(--black);
+      outline: none;
+      transition: border-color .2s;
     }
-    .email-input::placeholder { color: #aaa; }
-    .email-input:focus { border-color: var(--orange); background: #fff; }
+    .email-input::placeholder { color: #9CA3AF; }
+    .email-input:focus { border-color: var(--black); }
+    .email-input.error { border-color: #EF4444; }
 
     .subscribe-btn {
-      font-size: 15px;
-      font-weight: 600;
-      padding: 13px 22px;
-      background: var(--orange);
-      color: var(--white);
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 22px;
+      background: var(--yellow);
+      color: var(--black);
       border: none;
-      border-radius: 8px;
+      border-radius: var(--radius);
       cursor: pointer;
-      transition: background .2s, transform .1s;
       white-space: nowrap;
       flex-shrink: 0;
+      transition: background .15s, transform .1s;
+      letter-spacing: 0.3px;
     }
-    .subscribe-btn:hover   { background: #c94e20; }
+    .subscribe-btn:hover   { background: #c8bc30; }
     .subscribe-btn:active  { transform: scale(.97); }
-    .subscribe-btn:disabled { background: #ccc; cursor: not-allowed; }
+    .subscribe-btn:disabled { background: var(--gray-200); color: var(--gray-500); cursor: not-allowed; transform: none; }
 
     .form-note {
+      font-family: var(--sans);
       font-size: 12px;
-      color: #aaa;
+      color: #9CA3AF;
       margin-top: 12px;
       text-align: center;
     }
 
-    /* ── States ── */
-    .state-msg {
+    /* ── Status messages ── */
+    .msg {
       display: none;
-      border-radius: 8px;
+      border-radius: var(--radius);
       padding: 14px 16px;
       font-size: 14px;
+      font-family: var(--sans);
       line-height: 1.5;
-      margin-top: 0;
+      text-align: left;
     }
-    .state-msg.success {
-      background: #ecfdf5;
-      color: #065f46;
-      border: 1px solid #a7f3d0;
+    .msg-success {
+      background: #F0FDF4;
+      color: #15803D;
+      border: 1px solid #BBF7D0;
     }
-    .state-msg.error {
-      background: #fff5f5;
-      color: #991b1b;
-      border: 1px solid #fca5a5;
+    .msg-error {
+      background: #FFF5F5;
+      color: #991B1B;
+      border: 1px solid #FECACA;
     }
 
-    /* ── Perks list ── */
-    .perks {
+    /* ── Proof pills ── */
+    .proof {
       display: flex;
       justify-content: center;
-      gap: 28px;
-      margin-top: 32px;
       flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
     }
-    .perk {
-      font-size: 13px;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .perk-icon {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--orange);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      font-weight: bold;
-      flex-shrink: 0;
+    .proof-pill {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gray-500);
+      background: var(--gray-100);
+      border-radius: 100px;
+      padding: 6px 14px;
+      letter-spacing: 0.3px;
     }
 
     /* ── Footer ── */
     footer {
-      background: var(--navy);
-      padding: 20px 32px;
-      text-align: center;
-      font-size: 12px;
-      color: #555;
+      background: var(--black);
+      padding: 0 40px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
     }
-    footer a { color: #e05c2a; text-decoration: none; }
+    footer a {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: #6B7280;
+      text-decoration: none;
+      transition: color .15s;
+    }
+    footer a:hover { color: var(--yellow); }
+    footer span { color: #374151; font-size: 12px; }
 
     /* ── Mobile ── */
     @media (max-width: 480px) {
-      .brand-mark { font-size: 40px; padding: 12px 24px 10px; }
-      .tagline    { font-size: 18px; }
-      .form-row   { flex-direction: column; }
-      .subscribe-btn { width: 100%; }
-      .subscribe-card { padding: 24px 20px; }
-      header { padding: 16px 20px; }
+      nav { padding: 0 20px; }
+      .brand-mark { font-size: 40px; padding: 12px 28px 10px; }
+      .hero-headline { font-size: 22px; }
+      .form-row { flex-direction: column; }
+      .subscribe-btn { width: 100%; text-align: center; padding: 13px; }
+      .subscribe-card { padding: 20px; }
+      footer { padding: 0 20px; height: auto; padding: 16px 20px; flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
 <body>
-<div class="page">
 
-  <header>
-    <a class="logo" href="/">4minit</a>
-    <nav>
+  <!-- Navigation -->
+  <nav>
+    <a class="nav-logo" href="/">4<span>minit</span></a>
+    <div class="nav-links">
       <a href="/newsletters.html">Archive</a>
-    </nav>
-  </header>
+    </div>
+  </nav>
 
+  <!-- Hero -->
   <main class="hero">
     <div class="hero-inner">
 
       <div class="brand-mark">4<span>minit</span></div>
 
-      <h1 class="tagline">Mauritius, in 4 minutes.</h1>
-      <p class="sub-tagline">
-        The morning brief for Mauritian professionals — local news, regional developments,
-        and what's happening globally. Every weekday, before 7&nbsp;AM.
+      <h1 class="hero-headline">Your daily Mauritius brief.</h1>
+      <p class="hero-subtext">
+        Local news, the region, and what matters globally —
+        written for Mauritian professionals. Free, every morning before 7&nbsp;AM.
       </p>
 
       <div class="subscribe-card">
 
-        <!-- Success state -->
-        <div class="state-msg success" id="msgSuccess">
-          <strong>You're in!</strong> Your first edition arrives tomorrow morning. See you then.
+        <!-- Success -->
+        <div class="msg msg-success" id="msgSuccess">
+          <strong>You're in.</strong> Your first edition arrives tomorrow morning.
         </div>
 
-        <!-- Error state -->
-        <div class="state-msg error" id="msgError">
-          Something went wrong. Please try again or email us at
-          <a href="mailto:hello@4minit.xyz">hello@4minit.xyz</a>.
+        <!-- Error -->
+        <div class="msg msg-error" id="msgError">
+          Something went wrong. Try again or email
+          <a href="mailto:hello@4minit.xyz" style="color:inherit;font-weight:600;">hello@4minit.xyz</a>.
         </div>
 
         <!-- Form -->
@@ -272,54 +290,52 @@
               id="emailInput"
               placeholder="your@email.com"
               autocomplete="email"
-              required
             >
-            <button class="subscribe-btn" id="subscribeBtn" onclick="subscribe()">
+            <button class="subscribe-btn" id="subBtn" onclick="subscribe()">
               Subscribe free
             </button>
           </div>
-          <p class="form-note">Free forever. No spam. Unsubscribe any time.</p>
+          <p class="form-note">Free forever · No spam · Unsubscribe any time</p>
         </div>
 
-      </div><!-- /subscribe-card -->
+      </div>
 
-      <div class="perks">
-        <div class="perk"><div class="perk-icon">✓</div> Daily at 6 AM</div>
-        <div class="perk"><div class="perk-icon">✓</div> Local + global</div>
-        <div class="perk"><div class="perk-icon">✓</div> Free forever</div>
+      <div class="proof">
+        <span class="proof-pill">📅 Every weekday at 6 AM</span>
+        <span class="proof-pill">🇲🇺 Local + regional + global</span>
+        <span class="proof-pill">⚡ 4 minutes to read</span>
       </div>
 
     </div>
   </main>
 
+  <!-- Footer -->
   <footer>
     <a href="/newsletters.html">Past editions</a>
-    &nbsp;·&nbsp;
+    <span>·</span>
     <a href="mailto:hello@4minit.xyz">Contact</a>
   </footer>
-
-</div>
 
 <script>
   async function subscribe() {
     const emailInput = document.getElementById('emailInput');
-    const btn        = document.getElementById('subscribeBtn');
+    const btn        = document.getElementById('subBtn');
     const formWrap   = document.getElementById('formWrap');
     const msgSuccess = document.getElementById('msgSuccess');
     const msgError   = document.getElementById('msgError');
 
     const email = emailInput.value.trim();
+    emailInput.classList.remove('error');
+    msgError.style.display = 'none';
 
-    if (!email || !email.includes('@') || !email.includes('.')) {
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailInput.classList.add('error');
       emailInput.focus();
-      emailInput.style.borderColor = '#e05c2a';
       return;
     }
 
     btn.disabled    = true;
     btn.textContent = 'Subscribing…';
-    msgSuccess.style.display = 'none';
-    msgError.style.display   = 'none';
 
     try {
       const res = await fetch('/api/subscribe', {
@@ -334,17 +350,16 @@
       } else {
         throw new Error(`HTTP ${res.status}`);
       }
-    } catch (err) {
+    } catch {
       msgError.style.display = 'block';
       btn.disabled    = false;
       btn.textContent = 'Subscribe free';
     }
   }
 
-  // Allow Enter key to submit
   document.getElementById('emailInput').addEventListener('keydown', function(e) {
+    this.classList.remove('error');
     if (e.key === 'Enter') subscribe();
-    this.style.borderColor = '';
   });
 </script>
 </body>
