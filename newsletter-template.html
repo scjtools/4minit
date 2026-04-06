@@ -585,7 +585,7 @@
           <tr><td class="w" align="center" valign="top" style="padding:5px 5px 5px 5px;">
             <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
               <tr><td align="center" valign="top">
-                <p style="font-family:'Helvetica',Arial,sans-serif;color:#555555 !important;">Update your email preferences or unsubscribe <a style="text-decoration:underline;text-decoration-color:#555555 !important;color:#555555 !important;" href="{{unsubscribeLink}}">here</a></p>
+                <p style="font-family:'Helvetica',Arial,sans-serif;color:#555555 !important;">Update your email preferences or unsubscribe <a style="text-decoration:underline;text-decoration-color:#555555 !important;color:#555555 !important;" href="{{unsubscribeLink}}">here</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a style="text-decoration:underline;text-decoration-color:#555555 !important;color:#555555 !important;" href="https://4minit.xyz/unsubscribe.html">Unsubscribe on our website</a></p>
                 <p class="copyright" style="font-family:'Helvetica',Arial,sans-serif;color:#555555 !important;">© 2026 4minit | made in moris 🇲🇺</p>
                 <p style="font-family:'Helvetica',Arial,sans-serif;color:#555555 !important;">4minit<br>Route Royale, Mauritius</p>
               </td></tr>
@@ -607,5 +607,78 @@
 </table>
 
 </div>
+
+<!--
+  WEB MODE SCRIPT
+  Email clients strip <script> tags entirely — this only runs in browsers.
+  It injects the site nav + footer and hides email-only elements.
+-->
+<script>
+(function() {
+  var GREEN  = '#2CA156';
+  var DARK   = '#2d2d2d';
+  var WHITE  = '#ffffff';
+  var SANS   = "'Helvetica Neue',Helvetica,Arial,sans-serif";
+
+  // ── Inject site nav ──────────────────────────────────────────────────
+  var nav = document.createElement('nav');
+  nav.style.cssText = [
+    'background:' + DARK,
+    'display:flex',
+    'align-items:center',
+    'justify-content:space-between',
+    'padding:0 40px',
+    'height:64px',
+    'border-bottom:3px solid ' + GREEN,
+    'font-family:' + SANS,
+    'position:relative',
+    'z-index:100',
+  ].join(';');
+  nav.innerHTML = [
+    '<a href="/" style="display:block;line-height:0;">',
+      '<img src="/01%20Branding/Header_v02_Transparent.png" alt="4minit" style="height:36px;width:auto;display:block;">',
+    '</a>',
+    '<div style="display:flex;gap:24px;">',
+      '<a href="/newsletters.html" style="font-size:13px;font-weight:600;color:#aaa;text-decoration:none;letter-spacing:.5px;text-transform:uppercase;">Archive</a>',
+      '<a href="/" style="font-size:13px;font-weight:600;color:#aaa;text-decoration:none;letter-spacing:.5px;text-transform:uppercase;">Subscribe</a>',
+    '</div>',
+  ].join('');
+  document.body.insertBefore(nav, document.body.firstChild);
+
+  // ── Hide email-only elements ─────────────────────────────────────────
+  // Date + "Read online" bar
+  var headerRow = document.getElementById('header');
+  if (headerRow) headerRow.style.display = 'none';
+
+  // Unsubscribe + copyright footer rows (class="w")
+  var wCells = document.querySelectorAll('.w');
+  wCells.forEach(function(el) { el.style.display = 'none'; });
+
+  // ── Inject site footer ───────────────────────────────────────────────
+  var footer = document.createElement('footer');
+  footer.style.cssText = [
+    'background:' + DARK,
+    'height:56px',
+    'display:flex',
+    'align-items:center',
+    'justify-content:center',
+    'gap:20px',
+    'border-top:3px solid ' + GREEN,
+    'font-family:' + SANS,
+    'margin-top:16px',
+  ].join(';');
+  footer.innerHTML = [
+    '<a href="/" style="font-size:12px;color:#888;text-decoration:none;">4minit.xyz</a>',
+    '<span style="color:#444;font-size:12px;">&middot;</span>',
+    '<a href="/newsletters.html" style="font-size:12px;color:#888;text-decoration:none;">Archive</a>',
+    '<span style="color:#444;font-size:12px;">&middot;</span>',
+    '<a href="/unsubscribe.html" style="font-size:12px;color:#888;text-decoration:none;">Unsubscribe</a>',
+    '<span style="color:#444;font-size:12px;">&middot;</span>',
+    '<span style="color:#555;font-size:12px;">made in moris \uD83C\uDDF2\uD83C\uDDFA</span>',
+  ].join('');
+  document.body.appendChild(footer);
+})();
+</script>
+
 </body>
 </html>

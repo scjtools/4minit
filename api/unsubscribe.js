@@ -1,7 +1,6 @@
 /**
- * Vercel serverless function — POST /api/subscribe
- * Adds an email address to the Brevo subscriber list.
- * Also unblacklists the contact so re-subscribers receive campaigns.
+ * Vercel serverless function — POST /api/unsubscribe
+ * Removes a contact from the Brevo list and blacklists them from campaigns.
  */
 
 const https = require('https');
@@ -39,7 +38,6 @@ const ALLOWED_ORIGIN = 'https://4minit.xyz';
 const EMAIL_RE = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/;
 
 module.exports = async function handler(req, res) {
-  // CORS — restrict to production domain only
   const origin = req.headers['origin'] || '';
   if (origin === ALLOWED_ORIGIN) {
     res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN);
@@ -51,10 +49,7 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { email, _trap } = req.body || {};
-
-  // Honeypot — bots fill hidden fields, humans don't
-  if (_trap) return res.status(200).json({ success: true });
+  const { email } = req.body || {};
 
   if (!email || typeof email !== 'string' || !EMAIL_RE.test(email.trim())) {
     return res.status(400).json({ error: 'A valid email address is required.' });
@@ -62,32 +57,23 @@ module.exports = async function handler(req, res) {
 
   const cleanEmail = email.toLowerCase().trim();
   const listId = parseInt(process.env.BREVO_LIST_ID || '0', 10);
-  if (!listId) {
-    console.error('BREVO_LIST_ID is not configured');
-    return res.status(500).json({ error: 'Server configuration error.' });
-  }
 
   try {
-    // Add to list
-    const addRes = await brevoReq('POST', '/v3/contacts', {
-      email: cleanEmail,
-      listIds: [listId],
-      updateEnabled: true,
-    });
-
-    if (addRes.status !== 201 && addRes.status !== 204) {
-      console.error('Brevo add error:', addRes.status, addRes.body);
-      return res.status(500).json({ error: 'Subscription failed. Please try again.' });
-    }
-
-    // Unblacklist — ensures re-subscribers receive campaigns again
+    // Blacklist from email campaigns
     await brevoReq('PUT', `/v3/contacts/${encodeURIComponent(cleanEmail)}`, {
-      emailBlacklisted: false,
+      emailBlacklisted: true,
     });
+
+    // Remove from the newsletter list
+    if (listId) {
+      await brevoReq('POST', `/v3/contacts/lists/${listId}/contacts/remove`, {
+        emails: [cleanEmail],
+      });
+    }
 
     return res.status(200).json({ success: true });
   } catch (err) {
-    console.error('Subscribe handler error:', err);
+    console.error('Unsubscribe handler error:', err);
     return res.status(500).json({ error: 'Internal server error.' });
   }
 };
