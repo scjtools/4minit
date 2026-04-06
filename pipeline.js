@@ -14,6 +14,29 @@ const fs     = require('fs');
 const path   = require('path');
 const { execSync } = require('child_process');
 
+// ─── Secrets loader ──────────────────────────────────────────────────────────
+// Reads from ~/.config/4minit/secrets (key=value format, chmod 600).
+// Values already in process.env take precedence (e.g. CI environments).
+
+function loadSecrets() {
+  const secretsPath = path.join(process.env.HOME || '', '.config', '4minit', 'secrets');
+  try {
+    const lines = fs.readFileSync(secretsPath, 'utf8').split('\n');
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) continue;
+      const eq = trimmed.indexOf('=');
+      if (eq === -1) continue;
+      const key = trimmed.slice(0, eq).trim();
+      const val = trimmed.slice(eq + 1).trim();
+      if (key && !(key in process.env)) process.env[key] = val;
+    }
+  } catch {
+    // File not found — fall through to process.env only
+  }
+}
+loadSecrets();
+
 // ─── Config ─────────────────────────────────────────────────────────────────
 
 const GITHUB_TOKEN        = process.env.GITHUB_TOKEN;
@@ -26,8 +49,8 @@ const AGGREGATOR_OWNER = 'scjtools';
 const AGGREGATOR_REPO  = 'mauritius-news-aggregator';
 
 const REPO_DIR        = path.dirname(path.resolve(__filename));
-const NEWSLETTERS_DIR = path.join(REPO_DIR, '101 Newsletters');
-const FEED_PATH       = path.join(REPO_DIR, '001 Prompts', 'feed.json');
+const NEWSLETTERS_DIR = path.join(REPO_DIR, '02 Newsletters');
+const FEED_PATH       = path.join(REPO_DIR, 'feed.json');
 
 // ─── Date helpers ────────────────────────────────────────────────────────────
 
@@ -189,7 +212,7 @@ function updateArchive() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Archive — 4minit</title>
   <meta name="description" content="Every edition of the 4minit Mauritius Morning Brief, archived.">
-  <link rel="icon" type="image/png" href="/002%20Branding/Icon_v02_Transparent.png">
+  <link rel="icon" type="image/png" href="/01%20Branding/Icon_v02_Transparent.png">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -242,12 +265,12 @@ function updateArchive() {
 </head>
 <body>
   <nav>
-    <a class="nav-logo" href="/"><img src="/002%20Branding/Header_v02_Transparent.png" alt="4minit Daily News"></a>
+    <a class="nav-logo" href="/"><img src="/01%20Branding/Header_v02_Transparent.png" alt="4minit Daily News"></a>
     <div class="nav-links"><a href="/">Subscribe</a></div>
   </nav>
   <div class="page-hero">
     <div class="page-hero-inner">
-      <div class="page-hero-logo"><img src="/002%20Branding/Header_v02_Transparent.png" alt="4minit Daily News"></div>
+      <div class="page-hero-logo"><img src="/01%20Branding/Header_v02_Transparent.png" alt="4minit Daily News"></div>
       <h1>Past Editions</h1>
       <p>Every morning, Mauritius in 4 minutes.</p>
     </div>

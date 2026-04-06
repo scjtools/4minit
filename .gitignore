@@ -19,3 +19,9 @@ node_modules/
 .idea/
 *.swp
 *.swo
+
+# Private — not for GitHub
+master_prompt.md
+pipeline.js
+feed.json
+.claude/

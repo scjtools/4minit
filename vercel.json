@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/newsletters/:date",
-      "destination": "/101 Newsletters/:date"
+      "destination": "/02 Newsletters/:date"
     }
   ],
   "headers": [
