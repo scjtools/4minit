@@ -34,11 +34,18 @@ function brevoReq(body) {
   });
 }
 
+const ALLOWED_ORIGIN = 'https://4minit.xyz';
+const EMAIL_RE = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/;
+
 module.exports = async function handler(req, res) {
-  // CORS preflight
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  // CORS — restrict to production domain only
+  const origin = req.headers['origin'] || '';
+  if (origin === ALLOWED_ORIGIN) {
+    res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN);
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Vary', 'Origin');
+  }
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -48,9 +55,14 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email } = req.body || {};
+  const { email, _trap } = req.body || {};
 
-  if (!email || typeof email !== 'string' || !email.includes('@') || !email.includes('.')) {
+  // Honeypot — bots fill hidden fields, humans don't
+  if (_trap) {
+    return res.status(200).json({ success: true });
+  }
+
+  if (!email || typeof email !== 'string' || !EMAIL_RE.test(email.trim())) {
     return res.status(400).json({ error: 'A valid email address is required.' });
   }
 
