@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <title>Newsletter archive | 4minit</title>
+  <meta name="description" content="Browse the latest editions of 4minit, the free daily newsletter covering Mauritius, regional developments, and the global headlines that matter.">
+
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://4minit.xyz/newsletters/">
+
+  <meta property="og:title" content="Newsletter archive | 4minit">
+  <meta property="og:description" content="Browse the latest editions of 4minit, the free daily newsletter covering Mauritius, regional developments, and the global headlines that matter.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://4minit.xyz/newsletters/">
+  <meta property="og:image" content="https://4minit.xyz/assets/img/og-banner.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="4minit newsletter archive">
+  <meta property="og:site_name" content="4minit">
+  <meta property="og:locale" content="en_GB">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Newsletter archive | 4minit">
+  <meta name="twitter:description" content="Browse the latest editions of 4minit, the free daily newsletter covering Mauritius, regional developments, and the global headlines that matter.">
+  <meta name="twitter:image" content="https://4minit.xyz/assets/img/og-banner.webp">
+  <meta name="twitter:image:alt" content="4minit newsletter archive">
+
+  <link rel="icon" href="/assets/img/favicons/icon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="/assets/img/favicons/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "4minit newsletter archive",
+    "url": "https://4minit.xyz/newsletters/",
+    "description": "Browse the latest editions of 4minit, the free daily newsletter covering Mauritius, regional developments, and the global headlines that matter.",
+    "isPartOf": {
+      "@type": "NewsMediaOrganization",
+      "name": "4minit",
+      "url": "https://4minit.xyz/"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body data-page="archive">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div id="header"></div>
+
+  <main id="main">
+    <section class="page-hero page-hero-compact" aria-labelledby="archive-title">
+      <div class="container">
+        <div class="page-hero-inner">
+          <div class="section-label">Archive</div>
+          <h1 class="page-title" id="archive-title">Read every 4minit newsletter.</h1>
+          <p class="page-intro">Browse every published newsletter, from today's issue to the very first.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="latest-section" aria-labelledby="archive-list-title">
+      <div class="container">
+        <div
+          id="archiveGrid"
+          class="edition-grid"
+          aria-live="polite"
+          aria-busy="true"
+        >
+          <p class="edition-grid-status">Loading newsletter archive...</p>
+        </div>
+
+        <template id="editionCardTemplate">
+          <article class="edition-card">
+            <div class="edition-thumb" aria-hidden="true">
+              <div class="edition-meta-row">
+                <span class="edition-date"></span>
+                <span class="badge badge-latest hidden">Latest</span>
+              </div>
+
+              <div class="mini-preview">
+                <div class="mini-lines">
+                  <div class="mini-line w-90"></div>
+                  <div class="mini-line w-75"></div>
+                  <div class="mini-line w-60"></div>
+                </div>
+                <div class="mini-accent color-bar">
+                  <span class="c1"></span>
+                  <span class="c2"></span>
+                  <span class="c3"></span>
+                  <span class="c4"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="edition-body">
+              <h3 class="edition-title"></h3>
+              <p class="edition-summary"></p>
+              <a class="edition-cta" href="#">Read more →</a>
+            </div>
+          </article>
+        </template>
+        
+        <div class="hero-accent" aria-hidden="true">
+          <div class="color-bar">
+            <span class="c1"></span>
+            <span class="c2"></span>
+            <span class="c3"></span>
+            <span class="c4"></span>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+</body>
+</html>

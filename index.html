@@ -2,400 +2,214 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4minit — Your daily Mauritius brief</title>
-  <meta name="description" content="Mauritius in 4 minutes. A free daily newsletter for Mauritian professionals — local news, the region, and the world. Every morning before 7 AM.">
-  <meta property="og:title" content="4minit — Your daily Mauritius brief">
-  <meta property="og:description" content="Mauritius in 4 minutes. Free. Every morning.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <title>4minit — Mauritius News in 4 Minutes | Free Daily Newsletter</title>
+  <meta name="description" content="A free daily newsletter covering Mauritius news, regional developments, and the global headlines that matter — in your inbox every morning.">
+
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://4minit.xyz/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="4minit — Mauritius News in 4 Minutes | Free Daily Newsletter">
+  <meta property="og:description" content="A free daily newsletter covering Mauritius news, regional developments, and the global headlines that matter — in your inbox every morning.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="/01%20Branding/Banner_v02_White.png">
-  <link rel="icon" type="image/png" href="/01%20Branding/Icon_v02_Transparent.png">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta property="og:url" content="https://4minit.xyz/">
+  <meta property="og:image" content="https://4minit.xyz/assets/img/og-banner.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="4minit — Mauritius news in 4 minutes">
+  <meta property="og:site_name" content="4minit">
+  <meta property="og:locale" content="en_GB">
 
-    :root {
-      --green:   #2CA156;
-      --red:     #eb5555;
-      --blue:    #1B75D0;
-      --charcoal:#333333;
-      --dark:    #2d2d2d;
-      --white:   #ffffff;
-      --offwhite:#f7f7f7;
-      --gray-200:#E5E7EB;
-      --gray-500:#6B7280;
-      --radius:  6px;
-      --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    }
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="4minit — Mauritius News in 4 Minutes | Free Daily Newsletter">
+  <meta name="twitter:description" content="A free daily newsletter covering Mauritius news, regional developments, and the global headlines that matter — in your inbox every morning.">
+  <meta name="twitter:image" content="https://4minit.xyz/assets/img/og-banner.webp">
+  <meta name="twitter:image:alt" content="4minit — Mauritius news in 4 minutes">
 
-    html, body {
-      height: 100%;
-      font-family: var(--sans);
-      background: var(--white);
-      color: var(--charcoal);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+  <link rel="preload" as="image" href="/assets/img/profile.webp">
 
-    /* ── Navigation ── */
-    nav {
-      background: var(--dark);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 40px;
-      height: 64px;
-      border-bottom: 3px solid var(--green);
-    }
-    .nav-logo img {
-      height: 36px;
-      width: auto;
-      display: block;
-    }
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 600;
-      color: #aaaaaa;
-      text-decoration: none;
-      margin-left: 28px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      transition: color .15s;
-    }
-    .nav-links a:hover { color: var(--green); }
+  <!-- Favicons -->
+  <link rel="icon" href="/assets/img/favicons/icon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="/assets/img/favicons/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 
-    /* ── Hero ── */
-    .hero {
-      min-height: calc(100vh - 64px - 56px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 20px;
-      background: var(--white);
-    }
-    .hero-inner {
-      max-width: 560px;
-      width: 100%;
-      text-align: center;
-    }
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsMediaOrganization",
+    "name": "4minit",
+    "url": "https://4minit.xyz/",
+    "logo": "https://4minit.xyz/assets/img/favicons/icon.svg",
+    "description": "A free daily newsletter covering Mauritius news, regional developments, and the global headlines that matter — in your inbox every morning.",
+    "email": "4minit.mu@gmail.com",
+    "sameAs": [
+      "https://x.com/4minit_mu"
+    ]
+  }
+  </script>
 
-    /* ── Logo mark ── */
-    .hero-logo {
-      margin: 0 auto 32px;
-      width: 130px;
-    }
-    .hero-logo img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* ── Section label ── */
-    .section-label {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--green);
-      border-top: 2px solid var(--green);
-      padding-top: 6px;
-      margin-bottom: 18px;
-    }
-
-    /* ── Headlines ── */
-    .hero-headline {
-      font-size: 30px;
-      font-weight: 700;
-      color: var(--charcoal);
-      line-height: 1.25;
-      margin-bottom: 14px;
-      letter-spacing: -0.3px;
-    }
-    .hero-subtext {
-      font-size: 16px;
-      color: var(--gray-500);
-      line-height: 1.7;
-      margin-bottom: 36px;
-      max-width: 420px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* ── Subscribe card ── */
-    .subscribe-card {
-      background: var(--offwhite);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius);
-      border-top: 3px solid var(--green);
-      padding: 28px;
-    }
-
-    .form-row {
-      display: flex;
-      gap: 10px;
-    }
-    .email-input {
-      flex: 1;
-      min-width: 0;
-      font-family: var(--sans);
-      font-size: 15px;
-      padding: 12px 16px;
-      border: 1.5px solid var(--gray-200);
-      border-radius: var(--radius);
-      background: var(--white);
-      color: var(--charcoal);
-      outline: none;
-      transition: border-color .2s;
-    }
-    .email-input::placeholder { color: #aaaaaa; }
-    .email-input:focus { border-color: var(--green); }
-    .email-input.error { border-color: var(--red); }
-
-    .subscribe-btn {
-      font-family: var(--sans);
-      font-size: 14px;
-      font-weight: 700;
-      padding: 12px 22px;
-      background: var(--green);
-      color: var(--white);
-      border: none;
-      border-radius: var(--radius);
-      cursor: pointer;
-      white-space: nowrap;
-      flex-shrink: 0;
-      letter-spacing: 0.3px;
-      transition: background .15s, transform .1s;
-    }
-    .subscribe-btn:hover   { background: #239149; }
-    .subscribe-btn:active  { transform: scale(.97); }
-    .subscribe-btn:disabled { background: var(--gray-200); color: var(--gray-500); cursor: not-allowed; transform: none; }
-
-    .form-note {
-      font-size: 12px;
-      color: #aaaaaa;
-      margin-top: 12px;
-      text-align: center;
-    }
-
-    /* ── Status messages ── */
-    .msg {
-      display: none;
-      border-radius: var(--radius);
-      padding: 14px 16px;
-      font-size: 14px;
-      line-height: 1.5;
-      text-align: left;
-    }
-    .msg-success {
-      background: #f0fdf4;
-      color: #15803d;
-      border: 1px solid #bbf7d0;
-    }
-    .msg-error {
-      background: #fff5f5;
-      color: #991b1b;
-      border: 1px solid #fecaca;
-    }
-
-    /* ── Proof pills ── */
-    .proof {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 28px;
-    }
-    .proof-pill {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--charcoal);
-      background: var(--offwhite);
-      border: 1px solid var(--gray-200);
-      border-radius: 100px;
-      padding: 6px 14px;
-      letter-spacing: 0.2px;
-    }
-
-    /* ── Colour bar accent ── */
-    .color-bar {
-      display: flex;
-      height: 4px;
-      border-radius: 2px;
-      overflow: hidden;
-      margin: 32px auto 0;
-      max-width: 200px;
-    }
-    .color-bar span { flex: 1; }
-    .color-bar .c1 { background: #eb8f8f; } /* pink */
-    .color-bar .c2 { background: #8fb5e8; } /* blue */
-    .color-bar .c3 { background: #f5c97a; } /* yellow */
-    .color-bar .c4 { background: var(--green); } /* green */
-
-    /* ── Footer ── */
-    footer {
-      background: var(--dark);
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      border-top: 3px solid var(--green);
-    }
-    footer a {
-      font-size: 12px;
-      color: #888;
-      text-decoration: none;
-      transition: color .15s;
-    }
-    footer a:hover { color: var(--green); }
-    footer span { color: #444; font-size: 12px; }
-
-    /* ── Mobile ── */
-    @media (max-width: 480px) {
-      nav { padding: 0 20px; }
-      .nav-logo img { height: 28px; }
-      .hero-headline { font-size: 24px; }
-      .form-row { flex-direction: column; }
-      .subscribe-btn { width: 100%; text-align: center; padding: 13px; }
-      .subscribe-card { padding: 20px; }
-      footer { height: auto; padding: 16px 20px; flex-direction: column; gap: 10px; }
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js" defer></script>
 </head>
-<body>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Navigation -->
-  <nav>
-    <a class="nav-logo" href="/">
-      <img src="/01%20Branding/Header_v02_Transparent.png" alt="4minit Daily News">
-    </a>
-    <div class="nav-links">
-      <a href="/newsletters.html">Archive</a>
-    </div>
-  </nav>
+  <div id="header"></div>
 
-  <!-- Hero -->
-  <main class="hero">
-    <div class="hero-inner">
-
-      <!-- Icon mark -->
-      <div class="hero-logo">
-        <img src="/01%20Branding/Icon_v02_Transparent.png" alt="4minit">
-      </div>
-
-      <div class="section-label">Mauritius Morning Brief</div>
-
-      <h1 class="hero-headline">Your daily Mauritius brief.<br>In 4 minutes, flat.</h1>
-      <p class="hero-subtext">
-        Local news, the region, and what matters globally —
-        written for Mauritian professionals. Free, every morning before 7&nbsp;AM.
-      </p>
-
-      <div class="subscribe-card">
-
-        <!-- Success -->
-        <div class="msg msg-success" id="msgSuccess">
-          <strong>You're in.</strong> Your first edition arrives tomorrow morning.
-        </div>
-
-        <!-- Error -->
-        <div class="msg msg-error" id="msgError">
-          Something went wrong. Try again or email
-          <a href="mailto:hello@4minit.xyz" style="color:inherit;font-weight:600;">hello@4minit.xyz</a>.
-        </div>
-
-        <!-- Form -->
-        <div id="formWrap">
-          <!-- Honeypot: hidden from humans, bots fill it in -->
-          <input type="text" name="_trap" id="_trap" style="display:none;" tabindex="-1" autocomplete="off">
-          <div class="form-row">
-            <input
-              class="email-input"
-              type="email"
-              id="emailInput"
-              placeholder="your@email.com"
-              autocomplete="email"
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-logo">
+            <img
+              src="/assets/img/profile.webp"
+              width="200"
+              height="200"
+              fetchpriority="high"
+              alt="4minit profile"
             >
-            <button class="subscribe-btn" id="subBtn" onclick="subscribe()">
-              Subscribe free
-            </button>
           </div>
-          <p class="form-note">Free forever &middot; No spam &middot; Unsubscribe any time</p>
+
+          <div class="hero-accent" aria-hidden="true">
+            <div class="color-bar">
+              <span class="c1"></span>
+              <span class="c2"></span>
+              <span class="c3"></span>
+              <span class="c4"></span>
+            </div>
+          </div>
+
+          <h1 class="hero-headline" id="hero-title">Your daily dose of news.<br>In 4 minutes, flat.</h1>
+          <p class="hero-subtext">The latest from Mauritius, regional developments, and the global headlines that matter &ndash; in your inbox every morning.</p>
+
+          <section class="subscribe-card" id="subscribe" aria-labelledby="subscribe-heading">
+            <h2 id="subscribe-heading" class="form-label">Get your daily dose...</h2>
+
+            <div class="msg msg-success hidden" id="msgSuccess" aria-live="polite">
+              <strong>You're in.</strong> Your first newsletter arrives tomorrow morning.
+            </div>
+
+            <div class="msg msg-error hidden" id="msgError" aria-live="polite">
+              Something went wrong. Try again or email us at
+              <a href="mailto:4minit.mu@gmail.com" rel="noopener">4minit.mu@gmail.com</a>.
+            </div>
+
+            <form id="subscribeForm" novalidate>
+              <label class="sr-only" for="emailInput">Email address</label>
+              <input class="hidden" type="text" name="_trap" id="_trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+              <div id="formWrap">
+                <div class="form-row">
+                  <input
+                    class="email-input"
+                    type="email"
+                    id="emailInput"
+                    name="email"
+                    placeholder="Enter your email here..."
+                    autocomplete="email"
+                    inputmode="email"
+                    required
+                    aria-describedby="subscribeHelp"
+                  >
+                  <button class="subscribe-btn" id="subBtn" type="submit">
+                    Subscribe for FREE
+                  </button>
+                </div>
+
+                <p class="consent-note" id="subscribeHelp">
+                  By subscribing, you agree to receive 4minit by email, our <a href="/privacy">Privacy Policy</a> and our <a href="/terms">Terms of Service</a>.
+                </p>
+                <p class="form-note">Free forever &middot; <a href="/unsubscribe">Unsubscribe</a> anytime</p>
+              </div>
+            </form>
+          </section>
+
+          <div class="proof" aria-label="Newsletter highlights">
+            <span class="proof-pill">📅 7 days a week</span>
+            <span class="proof-pill">🇲🇺 Local + regional + global</span>
+            <span class="proof-pill">⚡ 4 minutes to read</span>
+          </div>
+
+          <div class="hero-accent" aria-hidden="true">
+            <div class="color-bar">
+              <span class="c1"></span>
+              <span class="c2"></span>
+              <span class="c3"></span>
+              <span class="c4"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="latest-section" aria-labelledby="latest-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-label">Latest news</div>
+            <h2 class="section-title" id="latest-title">Stay up to date in just 4 minutes</h2>
+            <p class="section-copy">We distill the latest stories, filter out the noise, and deliver a perfect dose for you.</p>
+          </div>
+          <a class="section-link" href="/newsletters">View all →</a>
         </div>
 
-      </div>
+        <div
+          id="editionGrid"
+          class="edition-grid"
+          aria-live="polite"
+          aria-busy="true"
+        >
+          <p class="edition-grid-status">Loading latest editions...</p>
+        </div>
 
-      <div class="proof">
-        <span class="proof-pill">📅 Every weekday at 6 AM</span>
-        <span class="proof-pill">🇲🇺 Local + regional + global</span>
-        <span class="proof-pill">⚡ 4 minutes to read</span>
-      </div>
+        <template id="editionCardTemplate">
+          <article class="edition-card">
+            <div class="edition-thumb" aria-hidden="true">
+              <div class="edition-meta-row">
+                <span class="edition-date"></span>
+                <span class="badge badge-latest hidden">Latest</span>
+              </div>
 
-      <div class="color-bar">
-        <span class="c1"></span>
-        <span class="c2"></span>
-        <span class="c3"></span>
-        <span class="c4"></span>
-      </div>
+              <div class="mini-preview">
+                <div class="mini-lines">
+                  <div class="mini-line w-90"></div>
+                  <div class="mini-line w-75"></div>
+                  <div class="mini-line w-60"></div>
+                </div>
+                <div class="mini-accent color-bar">
+                  <span class="c1"></span>
+                  <span class="c2"></span>
+                  <span class="c3"></span>
+                  <span class="c4"></span>
+                </div>
+              </div>
+            </div>
 
-    </div>
+            <div class="edition-body">
+              <h3 class="edition-title"></h3>
+              <p class="edition-summary"></p>
+              <a class="edition-cta" href="#">Read more →</a>
+            </div>
+          </article>
+        </template>
+
+        <div class="hero-accent" aria-hidden="true">
+          <div class="color-bar">
+            <span class="c1"></span>
+            <span class="c2"></span>
+            <span class="c3"></span>
+            <span class="c4"></span>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <a href="/newsletters.html">Past editions</a>
-    <span>&middot;</span>
-    <a href="mailto:hello@4minit.xyz">Contact</a>
-    <span>&middot;</span>
-    <span style="color:#555;">made in moris 🇲🇺</span>
-  </footer>
-
-<script>
-  async function subscribe() {
-    const emailInput = document.getElementById('emailInput');
-    const btn        = document.getElementById('subBtn');
-    const formWrap   = document.getElementById('formWrap');
-    const msgSuccess = document.getElementById('msgSuccess');
-    const msgError   = document.getElementById('msgError');
-
-    const email = emailInput.value.trim();
-    emailInput.classList.remove('error');
-    msgError.style.display = 'none';
-
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      emailInput.classList.add('error');
-      emailInput.focus();
-      return;
-    }
-
-    btn.disabled    = true;
-    btn.textContent = 'Subscribing…';
-
-    try {
-      const res = await fetch('/api/subscribe', {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ email, _trap: document.getElementById('_trap').value }),
-      });
-
-      if (res.ok) {
-        formWrap.style.display   = 'none';
-        msgSuccess.style.display = 'block';
-      } else {
-        throw new Error(`HTTP ${res.status}`);
-      }
-    } catch {
-      msgError.style.display = 'block';
-      btn.disabled    = false;
-      btn.textContent = 'Subscribe free';
-    }
-  }
-
-  document.getElementById('emailInput').addEventListener('keydown', function(e) {
-    this.classList.remove('error');
-    if (e.key === 'Enter') subscribe();
-  });
-</script>
+  <div id="footer"></div>
 </body>
 </html>

@@ -25,3 +25,6 @@ master_prompt.md
 pipeline.js
 feed.json
 .claude/
+
+# Pipeline ephemeral — generated at runtime, never committed
+scripts/.git-askpass.sh

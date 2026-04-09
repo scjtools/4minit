@@ -15,6 +15,27 @@
   This becomes the <title>, the email subject line, and the h1 in the header.
 -->
 <title>{{NEWSLETTER_TITLE}} — 4minit</title>
+<!--
+  SEO PLACEHOLDERS (web serving):
+  {{NEWSLETTER_DATE_ISO}} = ISO date string, e.g. 2026-04-06
+  {{NEWSLETTER_TITLE}}    = LS1 headline (plain text)
+  {{NEWSLETTER_SUBTITLE}} = "LS2 Headline. RS1 Headline. GS1 Headline."
+-->
+<meta name="description" content="{{NEWSLETTER_SUBTITLE}}">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://4minit.xyz/newsletters/{{NEWSLETTER_DATE_ISO}}">
+<meta property="og:title" content="{{NEWSLETTER_TITLE}} — 4minit">
+<meta property="og:description" content="{{NEWSLETTER_SUBTITLE}}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://4minit.xyz/newsletters/{{NEWSLETTER_DATE_ISO}}">
+<meta property="og:image" content="https://4minit.xyz/assets/img/og-banner.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="4minit">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{NEWSLETTER_TITLE}} — 4minit">
+<meta name="twitter:description" content="{{NEWSLETTER_SUBTITLE}}">
+<meta name="twitter:image" content="https://4minit.xyz/assets/img/og-banner.webp">
 <!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
 <style>
   :root { color-scheme: light; supported-color-schemes: light; }
@@ -34,17 +55,25 @@
   .c  { background-color: #FFFFFF; }
   /* Green divider */
   .j  { border-top: 1px solid #2CA156; }
-  /* Heading styles */
-  h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, ul, li, ol, p, p a { margin: 0; padding: 0; }
-  h1 { font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; font-size: 20px; color: #2CA156; line-height: 1; padding-bottom: 10px; padding-top: 10px; }
-  h2 { font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; font-size: 18px; color: #2CA156FF; line-height: 1; padding-bottom: 10px; padding-top: 10px; }
-  h4 { font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; font-size: 14px; color: #333333; line-height: 2; padding-bottom: 0; padding-top: 0; }
+  /* ── Email-scoped rules — prefixed with .email-article so they never
+       bleed into the injected site header / footer partials ── */
+  .email-article h1,.email-article h1 a,
+  .email-article h2,.email-article h2 a,
+  .email-article h3,.email-article h3 a,
+  .email-article h4,.email-article h4 a,
+  .email-article h5,.email-article h5 a,
+  .email-article h6,.email-article h6 a,
+  .email-article ul,.email-article li,
+  .email-article ol,.email-article p,.email-article p a { margin: 0; padding: 0; }
+  .email-article h1 { font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; font-size: 20px; color: #2CA156; line-height: 1; padding-bottom: 10px; padding-top: 10px; }
+  .email-article h2 { font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; font-size: 18px; color: #2CA156; line-height: 1; padding-bottom: 10px; padding-top: 10px; }
+  .email-article h4 { font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; font-size: 14px; color: #333333; line-height: 2; padding-bottom: 0; padding-top: 0; }
   /* Body text */
-  p { font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; color: #333333; font-size: 16px; line-height: 1.5; padding-bottom: 10px; padding-top: 10px; }
+  .email-article p { font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; color: #333333; font-size: 16px; line-height: 1.5; padding-bottom: 10px; padding-top: 10px; }
   /* Links in body */
-  p a, .e a, ul a, li a { word-break: break-word; color: #1B75D0FF !important; text-decoration: none; font-weight: bold; }
-  p a span, .e a span, ul a span, li a span { color: inherit; }
-  .link { color: #1B75D0FF !important; text-decoration: none; font-weight: bold; }
+  .email-article p a, .email-article .e a, .email-article ul a, .email-article li a { word-break: break-word; color: #1182ff !important; text-decoration: none; font-weight: bold; }
+  .email-article p a span, .email-article .e a span, .email-article ul a span, .email-article li a span { color: inherit; }
+  .link { color: #1182ff !important; text-decoration: none; font-weight: bold; }
   /* Date bar (small text top-right) */
   .f p { font-size: 12px; line-height: 15px; color: #333333; padding: 0; }
   .f p a { color: #333333 !important; }
@@ -55,7 +84,7 @@
   .w p   { font-size: 12px; line-height: 15px; font-weight: 400; color: #555555; }
   .w p a { text-decoration: underline !important; color: #555555 !important; }
   /* h1 links in section headers */
-  h1 a { text-decoration: none; color: #1B75D0FF !important; font-weight: bold; }
+  .email-article h1 a { text-decoration: none; color: #1182ff !important; font-weight: bold; }
   /* CTA button */
   .v { border-radius: 8px; border: solid 0px #2CA156; background-color: #2CA156; font-family: 'Helvetica', Arial, sans-serif; color: #FFFFFF; }
   .v a { text-decoration: none; display: block; color: #FFFFFF; }
@@ -67,7 +96,7 @@
   /* Responsive */
   @media only screen and (max-width: 667px) {
     .aa, .w100pc { width: 100% !important; }
-    .bodyWrapper  { padding: 4px 4px 4px 4px !important; }
+    .bodyWrapper  { padding: 0 !important; }
   }
   @media screen and (max-width: 480px) {
     u + .a .gg { width: 100% !important; width: 100vw !important; }
@@ -80,7 +109,7 @@
 </head>
 
 <body class="a" style="margin:0 auto;padding:0;word-wrap:normal;word-spacing:normal;background-color:#FFFFFF;">
-<div role="article" aria-roledescription="email" aria-label="4minit newsletter" lang="en" style="font-size:1rem">
+<div class="email-article" role="article" aria-roledescription="email" aria-label="4minit newsletter" lang="en" style="font-size:1rem">
 
 <!-- ── PREHEADER (hidden preview text) ── -->
 <!--
@@ -92,11 +121,11 @@
 
 <!-- ── OUTER WRAPPER ── -->
 <table role="none" width="100%" border="0" cellspacing="0" align="center" cellpadding="0" class="gg">
-<tr><td align="center" valign="top">
+<tr><td align="center" valign="top" style="padding:24px 8px;">
 
   <!-- ── 670px CONTAINER ── -->
   <table role="none" width="670" border="0" cellspacing="0" cellpadding="0" class="aa" style="width:670px;table-layout:fixed;">
-  <tr><td class="bodyWrapper" align="center" valign="top" style="padding:4px 4px 4px 4px;">
+  <tr><td class="bodyWrapper" align="center" valign="top" style="padding:0;border-radius:8px;border:1px solid #e5e7eb;box-shadow:0 8px 32px rgba(0,0,0,0.10);">
   <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 
 
@@ -105,65 +134,80 @@
        White background, rounded top corners
   ══════════════════════════════════════════════════════ -->
   <tr><td align="center" valign="top"
-      style="border-width:0;border-style:solid;border-color:#2CA156;border-radius:15px 15px 0 0;background-color:#FFFFFF;"
+      style="border-width:0;border-style:solid;border-color:#2CA156;border-radius:8px 8px 0 0;background-color:#FFFFFF;"
       class="c">
     <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 
-      <!-- Date + Read online -->
-      <tr id="header"><td style="padding:4px 4px 0 4px;">
-        <div style="padding-top:8px;padding-right:8px;padding-bottom:8px;padding-left:8px;">
-          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+      <!-- Date + Read online (email-only — hidden in browser) -->
+      <tr id="header"><td style="padding:4px 8px 0 8px;">
+        <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td class="f" align="right" valign="top">
+              <!--
+                PLACEHOLDER: replace {{NEWSLETTER_DATE}} with the date string
+                e.g. "April 05, 2026"
+              -->
+              <p>{{NEWSLETTER_DATE}} &nbsp;|&nbsp; <a href="https://4minit.xyz/newsletters/">Read online</a></p>
+            </td>
+          </tr>
+        </table>
+      </td></tr>
 
-            <!-- Date right-aligned -->
-            <tr>
-              <td class="f" align="right" valign="top">
-                <!--
-                  PLACEHOLDER: replace {{NEWSLETTER_DATE}} with the date string
-                  e.g. "April 05, 2026"
-                -->
-                <p>{{NEWSLETTER_DATE}} &nbsp;|&nbsp; <a href="https://4minit.xyz/newsletters.html">Read online</a></p>
-              </td>
-            </tr>
+      <!-- Logo + color bar + title + subtitle (visible in email and browser) -->
+      <tr><td style="padding:32px 16px 16px;">
+        <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 
-            <!-- Logo image centered -->
-            <tr>
-              <td class="dd" align="center" valign="top" style="width:100%;text-align:center;">
-                <table role="none" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:16px auto 16px;padding:0;">
-                  <tbody><tr>
-                    <td style="width:261px;padding:0;text-align:center;">
-                      <a href="https://4minit.xyz">
-                        <img alt="4minit" width="261" height="auto" border="0"
-                          style="width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;margin:0 auto;"
-                          src="https://4minit.xyz/01%20Branding/Header_v02_White.png">
-                      </a>
-                    </td>
-                  </tr></tbody>
-                </table>
-              </td>
-            </tr>
+          <!-- Logo image + color bar centered -->
+          <tr>
+            <td class="dd" align="center" valign="top" style="width:100%;text-align:center;">
+              <table role="none" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto;padding:0;">
+                <tbody><tr>
+                  <td style="padding:0;text-align:center;">
+                    <a href="https://4minit.xyz">
+                      <img alt="4minit" width="240" height="126" border="0"
+                        style="width:240px;height:126px;display:block;outline:none;text-decoration:none;margin:0 auto;"
+                        src="/assets/img/og-banner.webp">
+                    </a>
+                  </td>
+                </tr>
+                <!-- Color bar accent -->
+                <tr>
+                  <td style="padding:16px 0;text-align:center;">
+                    <table role="none" width="200" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto;border-radius:4px;overflow:hidden;">
+                      <tr>
+                        <td width="50" height="4" style="height:4px;background-color:#eb5555;line-height:4px;font-size:4px;">&nbsp;</td>
+                        <td width="50" height="4" style="height:4px;background-color:#1182ff;line-height:4px;font-size:4px;">&nbsp;</td>
+                        <td width="50" height="4" style="height:4px;background-color:#f7ac2f;line-height:4px;font-size:4px;">&nbsp;</td>
+                        <td width="50" height="4" style="height:4px;background-color:#2ca156;line-height:4px;font-size:4px;">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr></tbody>
+              </table>
+            </td>
+          </tr>
 
-            <!-- Newsletter headline + subtitle -->
-            <tr>
-              <td class="dd" align="center" valign="top" style="padding:15px 0;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
-                  <tr><td align="center" valign="top">
-                    <!--
-                      PLACEHOLDER: {{NEWSLETTER_TITLE}} — LS1 headline, plain text.
-                      The 🇲🇺 emoji prefix is included in the template.
-                    -->
-                    <h1 style="text-align:left;font-family:'Helvetica',Arial,sans-serif;font-weight:700;font-size:32px;color:#333333;padding:4px 0;line-height:38px;">🇲🇺 {{NEWSLETTER_TITLE}}</h1>
-                    <!--
-                      PLACEHOLDER: {{NEWSLETTER_SUBTITLE}} — plain text subtitle:
-                      "LS2 Headline. RS1 Headline. GS1 Headline."
-                    -->
-                    <p style="text-align:left;font-family:'Helvetica',Arial,sans-serif;font-weight:400;font-size:18px;color:#555555;padding:8px 0;line-height:22px;">{{NEWSLETTER_SUBTITLE}}</p>
-                  </td></tr>
-                </table>
-              </td>
-            </tr>
+          <!-- Newsletter headline + subtitle -->
+          <tr>
+            <td class="dd" align="center" valign="top" style="padding:16px 10px;">
+              <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                <tr><td align="center" valign="top">
+                  <!--
+                    PLACEHOLDER: {{NEWSLETTER_TITLE}} — LS1 headline, plain text.
+                    The 🇲🇺 emoji prefix is included in the template.
+                  -->
+                  <h1 style="text-align:left;font-family:'Helvetica',Arial,sans-serif;font-weight:700;font-size:32px;color:#333333;padding:0 0 6px 0;line-height:38px;">🇲🇺 {{NEWSLETTER_TITLE}}</h1>
+                  <!--
+                    PLACEHOLDER: {{NEWSLETTER_SUBTITLE}} — plain text subtitle:
+                    "LS2 Headline. RS1 Headline. GS1 Headline."
+                  -->
+                  <p style="text-align:left;font-family:'Helvetica',Arial,sans-serif;font-weight:400;font-size:18px;color:#555555;padding:6px 0 0 0;line-height:22px;">{{NEWSLETTER_SUBTITLE}}</p>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
 
-          </table>
-        </div>
+        </table>
       </td></tr>
 
     </table>
@@ -173,36 +217,32 @@
   <!-- ══════════════════════════════════════════════════════
        CONTENT BLOCKS
   ══════════════════════════════════════════════════════ -->
-  <tr id="content-blocks"><td class="email-card-body" align="center" valign="top" style="padding-bottom:0;">
+  <tr id="content-blocks"><td class="email-card-body" align="center" valign="top" style="padding:0 16px 32px 16px;">
   <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 
 
     <!-- ── INTRO BOX (dashed green) ── -->
     <tr><td>
       <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
-        <tr><td height="4px" style="line-height:1px;font-size:1px;height:4px;">&nbsp;</td></tr>
         <tr><td>
           <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-              <td bgcolor="transparent" style="background-color:transparent;border-color:#2ca156;border-style:dashed;border-width:1px;padding:4px 4px 4px 4px;">
+              <td bgcolor="#fafafa" style="background-color:#fafafa;border-color:#2ca156;border-style:solid;border-width:1px;border-left-width:3px;padding:4px;border-radius:8px;">
                 <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr><td class="dd" align="justify" style="padding:0 4px;text-align:justify;word-break:break-word;">
-                    <p style="mso-line-height-alt:150%;">🌟<b> Good morning!</b> This is 4minit, delivering today's top stories from Mauritius and around the world.</p>
+                    <p style="font-size:14px;line-height:1.4;padding:8px 0;mso-line-height-alt:140%;">🌟<b> Good morning!</b> This is 4minit, delivering today's top stories from Mauritius and around the world.</p>
                   </td></tr>
                   <tr><td class="dd" align="justify" style="padding:0 4px;text-align:justify;word-break:break-word;">
-                    <p style="mso-line-height-alt:150%;"><span style="color:#555;font-size:0.8rem;">Estimated reading time: </span><span style="color:#555;font-size:0.8rem;"><b>4 minutes ⏱️</b></span></p>
+                    <p style="font-size:14px;line-height:1.4;padding:0;mso-line-height-alt:140%;"><span style="color:#555;font-size:12px;">Estimated reading time: </span><span style="color:#555;font-size:12px;"><b>4 minutes ⏱️</b></span></p>
                   </td></tr>
                   <tr><td class="dd" align="justify" style="padding:0 4px;text-align:justify;word-break:break-word;">
-                    <p style="mso-line-height-alt:150%;"><span style="font-size:0.8rem;">New here? </span><span style="font-size:0.8rem;"><a class="link" href="https://4minit.xyz">Subscribe to our FREE daily newsletter!</a></span></p>
+                    <p style="font-size:14px;line-height:1.4;padding:8px 0 0;mso-line-height-alt:140%;"><span style="color:#555;font-size:12px;">New here? </span><span style="font-size:12px;"><a class="link" href="https://4minit.xyz">Subscribe to our FREE daily newsletter!</a></span></p>
                   </td></tr>
                 </table>
               </td>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
             </tr>
           </table>
         </td></tr>
-        <tr><td height="20px" style="line-height:1px;font-size:1px;height:20px;">&nbsp;</td></tr>
       </table>
     </td></tr>
 
@@ -232,36 +272,26 @@
     ════════════════════════════════════════════════════ -->
 
     <tr><td>
-      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
-        <tr><td height="12px" style="line-height:1px;font-size:1px;height:12px;">&nbsp;</td></tr>
-        <tr><td>
-          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-              <td bgcolor="#eb5555" style="background-color:#eb5555;border-color:#eb5555;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr><td class="dd" align="justify" valign="top" style="color:#2CA156;font-weight:700;padding:0 4px;text-align:justify;">
-                    <h1 style="color:#2CA156;font-weight:700;mso-line-height-alt:100%;">💬<span style="color:#ffffff;"> THE BIG STORY</span></h1>
-                  </td></tr>
-                </table>
-              </td>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-            </tr>
-          </table>
-        </td></tr>
-        <tr><td>
-          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-              <td bgcolor="transparent" style="background-color:transparent;border-color:#eb5555;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-                  {{BIG_STORY}}
-                </table>
-              </td>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-            </tr>
-          </table>
-        </td></tr>
+      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr><td height="32px" style="line-height:1px;font-size:1px;height:32px;">&nbsp;</td></tr>
+        <tr>
+          <td bgcolor="#ffffff" style="background-color:#ffffff;border-radius:8px;border:1px solid #e5e7eb;padding:0;">
+            <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td bgcolor="#eb5555" style="background-color:#eb5555;padding:10px 14px;border-radius:8px 8px 0 0;">
+                  <h1 style="font-family:'Helvetica',Arial,sans-serif;font-weight:700;font-size:20px;color:#ffffff;line-height:1;margin:0;padding:0;">💬 THE BIG STORY</h1>
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#ffffff" style="background-color:#ffffff;padding:12px 14px 4px 14px;">
+                  <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                    {{BIG_STORY}}
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
       </table>
     </td></tr>
 
@@ -294,36 +324,26 @@
     ════════════════════════════════════════════════════ -->
 
     <tr><td>
-      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
-        <tr><td height="32px" style="line-height:1px;font-size:1px;height:32px;">&nbsp;</td></tr>
-        <tr><td>
-          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-              <td bgcolor="#2ca156" style="background-color:#2ca156;border-color:#2ca156;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr><td class="dd" align="justify" valign="top" style="color:#2CA156;font-weight:700;padding:0 4px;text-align:justify;">
-                    <h1 style="color:#2CA156;font-weight:700;mso-line-height-alt:100%;">🇲🇺<span style="color:#ffffff;"> IN MAURITIUS</span></h1>
-                  </td></tr>
-                </table>
-              </td>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-            </tr>
-          </table>
-        </td></tr>
-        <tr><td>
-          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-              <td bgcolor="transparent" style="background-color:transparent;border-color:#2ca156;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-                  {{IN_MAURITIUS}}
-                </table>
-              </td>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-            </tr>
-          </table>
-        </td></tr>
+      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr><td height="16px" style="line-height:1px;font-size:1px;height:16px;">&nbsp;</td></tr>
+        <tr>
+          <td bgcolor="#ffffff" style="background-color:#ffffff;border-radius:8px;border:1px solid #e5e7eb;padding:0;">
+            <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td bgcolor="#2ca156" style="background-color:#2ca156;padding:10px 14px;border-radius:8px 8px 0 0;">
+                  <h1 style="font-family:'Helvetica',Arial,sans-serif;font-weight:700;font-size:20px;color:#ffffff;line-height:1;margin:0;padding:0;">🇲🇺 IN MAURITIUS</h1>
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#ffffff" style="background-color:#ffffff;padding:12px 14px 4px 14px;">
+                  <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                    {{IN_MAURITIUS}}
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
       </table>
     </td></tr>
 
@@ -346,65 +366,65 @@
     ════════════════════════════════════════════════════ -->
 
     <tr><td>
-      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
-        <tr><td height="32px" style="line-height:1px;font-size:1px;height:32px;">&nbsp;</td></tr>
-        <tr><td>
-          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-              <td bgcolor="#004ca3" style="background-color:#004ca3;border-color:#004ca3;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr><td class="dd" align="justify" valign="top" style="color:#2CA156;font-weight:700;padding:0 4px;text-align:justify;">
-                    <h1 style="color:#2CA156;font-weight:700;mso-line-height-alt:100%;">🔢<span style="color:#ffffff;"> BY THE NUMBERS</span></h1>
-                  </td></tr>
-                </table>
-              </td>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-            </tr>
-          </table>
-        </td></tr>
-        <tr><td>
-          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-              <td bgcolor="transparent" style="background-color:transparent;border-color:#004ca3;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-                  {{BY_THE_NUMBERS}}
-                </table>
-              </td>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-            </tr>
-          </table>
-        </td></tr>
+      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr><td height="16px" style="line-height:1px;font-size:1px;height:16px;">&nbsp;</td></tr>
+        <tr>
+          <td bgcolor="#ffffff" style="background-color:#ffffff;border-radius:8px;border:1px solid #e5e7eb;padding:0;">
+            <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td bgcolor="#004ca3" style="background-color:#004ca3;padding:10px 14px;border-radius:8px 8px 0 0;">
+                  <h1 style="font-family:'Helvetica',Arial,sans-serif;font-weight:700;font-size:20px;color:#ffffff;line-height:1;margin:0;padding:0;">🔢 BY THE NUMBERS</h1>
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#ffffff" style="background-color:#ffffff;padding:12px 14px 4px 14px;">
+                  <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                    {{BY_THE_NUMBERS}}
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
       </table>
     </td></tr>
 
 
-    <!-- ── Mid-newsletter subscribe nudge (dashed green) ── -->
+    <!-- ── Mid-newsletter subscribe nudge ── -->
+    <tr><td height="32px" style="line-height:1px;font-size:1px;height:16px;">&nbsp;</td></tr>
     <tr><td>
       <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
-        <tr><td height="32px" style="line-height:1px;font-size:1px;height:32px;">&nbsp;</td></tr>
         <tr><td>
           <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-              <td bgcolor="transparent" style="background-color:transparent;border-color:#2ca156;border-style:dashed;border-width:1px;padding:4px 4px 4px 4px;">
+              <td bgcolor="#fafafa" style="background-color:#fafafa;border-color:#2ca156;border-style:solid;border-width:1px;border-left-width:3px;padding:4px;border-radius:8px;">
                 <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr><td class="dd" align="justify" style="padding:0 4px;text-align:justify;word-break:break-word;">
-                    <p style="mso-line-height-alt:150%;">🌟<b> Enjoying this 4minit?</b> If you found your way here but are not yet subscribed, let us help you with that:</p>
+                    <p style="font-size:14px;line-height:1.4;padding:8px 0;mso-line-height-alt:140%;">🌟<b> Enjoying this 4minit?</b> If you found your way here but are not yet subscribed, let us help you with that:</p>
                   </td></tr>
                   <tr><td class="dd" align="justify" style="padding:0 4px;text-align:justify;word-break:break-word;">
-                    <p style="mso-line-height-alt:150%;font-size:0.8rem;"><a class="link" href="https://4minit.xyz">Subscribe to our FREE daily newsletter!</a></p>
+                    <p style="font-size:12px;line-height:1.4;padding:0 0 8px;mso-line-height-alt:140%;"><a class="link" href="https://4minit.xyz">Subscribe to our FREE daily newsletter!</a></p>
                   </td></tr>
                 </table>
               </td>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
             </tr>
           </table>
         </td></tr>
       </table>
     </td></tr>
 
+
+    <!-- ── Color bar half-time separator ── -->
+    <tr><td align="center" style="padding:32px 0;">
+      <table role="none" width="200" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto;border-radius:4px;overflow:hidden;">
+        <tr>
+          <td width="50" height="4" style="height:4px;background-color:#eb5555;line-height:4px;font-size:4px;">&nbsp;</td>
+          <td width="50" height="4" style="height:4px;background-color:#1182ff;line-height:4px;font-size:4px;">&nbsp;</td>
+          <td width="50" height="4" style="height:4px;background-color:#f7ac2f;line-height:4px;font-size:4px;">&nbsp;</td>
+          <td width="50" height="4" style="height:4px;background-color:#2ca156;line-height:4px;font-size:4px;">&nbsp;</td>
+        </tr>
+      </table>
+    </td></tr>
 
     <!-- ════════════════════════════════════════════════════
          SECTION 4 — IN OUR BACKYARD   [#2ca156 green]
@@ -414,36 +434,25 @@
     ════════════════════════════════════════════════════ -->
 
     <tr><td>
-      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
-        <tr><td height="32px" style="line-height:1px;font-size:1px;height:32px;">&nbsp;</td></tr>
-        <tr><td>
-          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-              <td bgcolor="#2ca156" style="background-color:#2ca156;border-color:#2ca156;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr><td class="dd" align="justify" valign="top" style="color:#2CA156;font-weight:700;padding:0 4px;text-align:justify;">
-                    <h1 style="color:#2CA156;font-weight:700;mso-line-height-alt:100%;"><span style="color:#ffffff;">🌍 IN OUR BACKYARD</span></h1>
-                  </td></tr>
-                </table>
-              </td>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-            </tr>
-          </table>
-        </td></tr>
-        <tr><td>
-          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-              <td bgcolor="transparent" style="background-color:transparent;border-color:#2ca156;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-                  {{IN_OUR_BACKYARD}}
-                </table>
-              </td>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-            </tr>
-          </table>
-        </td></tr>
+      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td bgcolor="#ffffff" style="background-color:#ffffff;border-radius:8px;border:1px solid #e5e7eb;padding:0;">
+            <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td bgcolor="#2ca156" style="background-color:#2ca156;padding:10px 14px;border-radius:8px 8px 0 0;">
+                  <h1 style="font-family:'Helvetica',Arial,sans-serif;font-weight:700;font-size:20px;color:#ffffff;line-height:1;margin:0;padding:0;">🌍 IN OUR BACKYARD</h1>
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#ffffff" style="background-color:#ffffff;padding:12px 14px 4px 14px;">
+                  <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                    {{IN_OUR_BACKYARD}}
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
       </table>
     </td></tr>
 
@@ -455,36 +464,26 @@
     ════════════════════════════════════════════════════ -->
 
     <tr><td>
-      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
-        <tr><td height="32px" style="line-height:1px;font-size:1px;height:32px;">&nbsp;</td></tr>
-        <tr><td>
-          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-              <td bgcolor="#2ca156" style="background-color:#2ca156;border-color:#2ca156;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr><td class="dd" align="justify" valign="top" style="color:#2CA156;font-weight:700;padding:0 4px;text-align:justify;">
-                    <h1 style="color:#2CA156;font-weight:700;mso-line-height-alt:100%;"><span style="color:#ffffff;">🗺️ AROUND THE WORLD</span></h1>
-                  </td></tr>
-                </table>
-              </td>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-            </tr>
-          </table>
-        </td></tr>
-        <tr><td>
-          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-              <td bgcolor="transparent" style="background-color:transparent;border-color:#2ca156;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-                  {{AROUND_THE_WORLD}}
-                </table>
-              </td>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-            </tr>
-          </table>
-        </td></tr>
+      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr><td height="16px" style="line-height:1px;font-size:1px;height:16px;">&nbsp;</td></tr>
+        <tr>
+          <td bgcolor="#ffffff" style="background-color:#ffffff;border-radius:8px;border:1px solid #e5e7eb;padding:0;">
+            <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td bgcolor="#2ca156" style="background-color:#2ca156;padding:10px 14px;border-radius:8px 8px 0 0;">
+                  <h1 style="font-family:'Helvetica',Arial,sans-serif;font-weight:700;font-size:20px;color:#ffffff;line-height:1;margin:0;padding:0;">🗺️ AROUND THE WORLD</h1>
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#ffffff" style="background-color:#ffffff;padding:12px 14px 4px 14px;">
+                  <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                    {{AROUND_THE_WORLD}}
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
       </table>
     </td></tr>
 
@@ -497,36 +496,26 @@
     ════════════════════════════════════════════════════ -->
 
     <tr><td>
-      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
-        <tr><td height="32px" style="line-height:1px;font-size:1px;height:32px;">&nbsp;</td></tr>
-        <tr><td>
-          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-              <td bgcolor="#333" style="background-color:#333;border-color:#333;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr><td class="dd" align="justify" valign="top" style="color:#2CA156;font-weight:700;padding:0 4px;text-align:justify;">
-                    <h1 style="color:#2CA156;font-weight:700;mso-line-height-alt:100%;">🧠<span style="color:#ffffff;"> THE DEEP END</span></h1>
-                  </td></tr>
-                </table>
-              </td>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-            </tr>
-          </table>
-        </td></tr>
-        <tr><td>
-          <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-              <td bgcolor="transparent" style="background-color:transparent;border-color:#333;border-style:solid;border-width:2px;padding:4px 4px 4px 4px;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-                  {{THE_DEEP_END}}
-                </table>
-              </td>
-              <td width="4px" style="line-height:1px;font-size:1px;width:4px;">&nbsp;</td>
-            </tr>
-          </table>
-        </td></tr>
+      <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr><td height="16px" style="line-height:1px;font-size:1px;height:16px;">&nbsp;</td></tr>
+        <tr>
+          <td bgcolor="#ffffff" style="background-color:#ffffff;border-radius:8px;border:1px solid #e5e7eb;padding:0;">
+            <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td bgcolor="#333333" style="background-color:#333333;padding:10px 14px;border-radius:8px 8px 0 0;">
+                  <h1 style="font-family:'Helvetica',Arial,sans-serif;font-weight:700;font-size:20px;color:#ffffff;line-height:1;margin:0;padding:0;">🧠 THE DEEP END</h1>
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#ffffff" style="background-color:#ffffff;padding:12px 14px 4px 14px;">
+                  <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
+                    {{THE_DEEP_END}}
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
       </table>
     </td></tr>
 
@@ -536,60 +525,45 @@
 
 
   <!-- ══════════════════════════════════════════════════════
-       FOOTER — white, rounded bottom corners
+       FOOTER — sign-off + unsubscribe
   ══════════════════════════════════════════════════════ -->
+  
+          <!-- Color bar -->
+          <tr><td align="center" valign="top" style="padding:0 0 32px 0;">
+            <table role="none" width="200" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto;border-radius:4px;overflow:hidden;">
+              <tr>
+                <td width="50" height="4" style="height:4px;background-color:#eb5555;line-height:4px;font-size:4px;">&nbsp;</td>
+                <td width="50" height="4" style="height:4px;background-color:#1182ff;line-height:4px;font-size:4px;">&nbsp;</td>
+                <td width="50" height="4" style="height:4px;background-color:#f7ac2f;line-height:4px;font-size:4px;">&nbsp;</td>
+                <td width="50" height="4" style="height:4px;background-color:#2ca156;line-height:4px;font-size:4px;">&nbsp;</td>
+              </tr>
+            </table>
+          </td></tr>
+  
   <tr><td align="center" valign="top">
   <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
-    <tr><td></tr><tr>
+    <tr>
       <td class="b" align="center" valign="top" bgcolor="#FFFFFF"
-          style="padding:16px 0 16px 0;border-style:solid;border-width:0 0 0 0;border-color:#2CA156;border-bottom-left-radius:15px;border-bottom-right-radius:15px;">
+          style="padding:0 16px 32px 16px;border-bottom-left-radius:8px;border-bottom-right-radius:8px;">
         <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 
-          <!-- CTA line -->
-          <tr><td>
-            <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
-              <tr><td height="20px" style="line-height:1px;font-size:1px;height:20px;">&nbsp;</td></tr>
-              <tr><td bgcolor="transparent" style="background-color:transparent;padding:0;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr><td class="dd" align="center" valign="top" style="color:#333333;font-weight:400;padding:0 4px;text-align:center;">
-                    <h4 style="color:#333333;font-weight:400;mso-line-height-alt:200%;"><a class="link" href="https://4minit.xyz">Subscribe for FREE</a> daily news!<br>Share this newsletter with the people you love ❤️<br>Would you like to join our team or report any mistakes? <a class="link" href="mailto:hello@4minit.xyz">Let us know!</a></h4>
-                  </td></tr>
-                </table>
-              </td></tr>
-            </table>
+          <!-- CTA + sign-off -->
+          <tr><td class="dd" align="center" valign="top" style="padding:0 4px;text-align:center;">
+            <h4 style="color:#333333;font-weight:400;mso-line-height-alt:200%;"><a class="link" href="https://4minit.xyz">Subscribe for FREE</a> daily news!<br>Share this newsletter with the people you love ❤️</h4>
           </td></tr>
+
+          <tr><td height="16px" style="line-height:1px;font-size:1px;height:16px;">&nbsp;</td></tr>
 
           <!-- Sign-off -->
-          <tr><td>
-            <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" style="">
-              <tr><td height="24px" style="line-height:1px;font-size:1px;height:24px;">&nbsp;</td></tr>
-              <tr><td bgcolor="transparent" style="background-color:transparent;padding:0;">
-                <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr><td class="dd" align="center" valign="top" style="color:#333333;font-weight:400;padding:0 4px;text-align:center;">
-                    <h4><b>Merci, a demain! 👋</b></h4>
-                  </td></tr>
-                </table>
-              </td></tr>
-              <tr><td height="8px" style="line-height:1px;font-size:1px;height:8px;">&nbsp;</td></tr>
-            </table>
+          <tr><td class="dd" align="center" valign="top" style="padding:0 4px;text-align:center;">
+            <h4><b>Merci, a demain! 👋</b></h4>
           </td></tr>
 
-          <!-- Green divider -->
-          <tr><td align="center" valign="top" style="font-size:0;line-height:0;padding:12px 0;" class="dd">
-            <table class="j" role="none" width="98%" border="0" cellspacing="0" cellpadding="0" align="center">
-              <tr><td>&nbsp;</td></tr>
-            </table>
-          </td></tr>
 
-          <!-- Unsubscribe + copyright -->
-          <tr><td class="w" align="center" valign="top" style="padding:5px 5px 5px 5px;">
-            <table role="none" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
-              <tr><td align="center" valign="top">
-                <p style="font-family:'Helvetica',Arial,sans-serif;color:#555555 !important;">Update your email preferences or unsubscribe <a style="text-decoration:underline;text-decoration-color:#555555 !important;color:#555555 !important;" href="{{unsubscribeLink}}">here</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a style="text-decoration:underline;text-decoration-color:#555555 !important;color:#555555 !important;" href="https://4minit.xyz/unsubscribe.html">Unsubscribe on our website</a></p>
-                <p class="copyright" style="font-family:'Helvetica',Arial,sans-serif;color:#555555 !important;">© 2026 4minit | made in moris 🇲🇺</p>
-                <p style="font-family:'Helvetica',Arial,sans-serif;color:#555555 !important;">4minit<br>Route Royale, Mauritius</p>
-              </td></tr>
-            </table>
+
+          <!-- Unsubscribe -->
+          <tr><td class="w" align="center" valign="top" style="padding:0 4px;">
+            <p style="font-family:'Helvetica',Arial,sans-serif;font-size:12px;color:#555555;"><a style="color:#555555 !important;text-decoration:underline;" href="{{unsubscribeLink}}">Unsubscribe</a></p>
           </td></tr>
 
         </table>
@@ -609,76 +583,9 @@
 </div>
 
 <!--
-  WEB MODE SCRIPT
-  Email clients strip <script> tags entirely — this only runs in browsers.
-  It injects the site nav + footer and hides email-only elements.
+  WEB MODE SCRIPT — email clients strip <script> tags, browsers load it.
 -->
-<script>
-(function() {
-  var GREEN  = '#2CA156';
-  var DARK   = '#2d2d2d';
-  var WHITE  = '#ffffff';
-  var SANS   = "'Helvetica Neue',Helvetica,Arial,sans-serif";
-
-  // ── Inject site nav ──────────────────────────────────────────────────
-  var nav = document.createElement('nav');
-  nav.style.cssText = [
-    'background:' + DARK,
-    'display:flex',
-    'align-items:center',
-    'justify-content:space-between',
-    'padding:0 40px',
-    'height:64px',
-    'border-bottom:3px solid ' + GREEN,
-    'font-family:' + SANS,
-    'position:relative',
-    'z-index:100',
-  ].join(';');
-  nav.innerHTML = [
-    '<a href="/" style="display:block;line-height:0;">',
-      '<img src="/01%20Branding/Header_v02_Transparent.png" alt="4minit" style="height:36px;width:auto;display:block;">',
-    '</a>',
-    '<div style="display:flex;gap:24px;">',
-      '<a href="/newsletters.html" style="font-size:13px;font-weight:600;color:#aaa;text-decoration:none;letter-spacing:.5px;text-transform:uppercase;">Archive</a>',
-      '<a href="/" style="font-size:13px;font-weight:600;color:#aaa;text-decoration:none;letter-spacing:.5px;text-transform:uppercase;">Subscribe</a>',
-    '</div>',
-  ].join('');
-  document.body.insertBefore(nav, document.body.firstChild);
-
-  // ── Hide email-only elements ─────────────────────────────────────────
-  // Date + "Read online" bar
-  var headerRow = document.getElementById('header');
-  if (headerRow) headerRow.style.display = 'none';
-
-  // Unsubscribe + copyright footer rows (class="w")
-  var wCells = document.querySelectorAll('.w');
-  wCells.forEach(function(el) { el.style.display = 'none'; });
-
-  // ── Inject site footer ───────────────────────────────────────────────
-  var footer = document.createElement('footer');
-  footer.style.cssText = [
-    'background:' + DARK,
-    'height:56px',
-    'display:flex',
-    'align-items:center',
-    'justify-content:center',
-    'gap:20px',
-    'border-top:3px solid ' + GREEN,
-    'font-family:' + SANS,
-    'margin-top:16px',
-  ].join(';');
-  footer.innerHTML = [
-    '<a href="/" style="font-size:12px;color:#888;text-decoration:none;">4minit.xyz</a>',
-    '<span style="color:#444;font-size:12px;">&middot;</span>',
-    '<a href="/newsletters.html" style="font-size:12px;color:#888;text-decoration:none;">Archive</a>',
-    '<span style="color:#444;font-size:12px;">&middot;</span>',
-    '<a href="/unsubscribe.html" style="font-size:12px;color:#888;text-decoration:none;">Unsubscribe</a>',
-    '<span style="color:#444;font-size:12px;">&middot;</span>',
-    '<span style="color:#555;font-size:12px;">made in moris \uD83C\uDDF2\uD83C\uDDFA</span>',
-  ].join('');
-  document.body.appendChild(footer);
-})();
-</script>
+<script src="/assets/js/newsletter.js" defer></script>
 
 </body>
 </html>

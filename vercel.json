@@ -1,27 +1,36 @@
 {
-  "rewrites": [
-    {
-      "source": "/newsletters/:date",
-      "destination": "/02 Newsletters/:date"
-    }
-  ],
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+
   "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options",       "value": "nosniff" },
-        { "key": "X-Frame-Options",               "value": "DENY" },
-        { "key": "Referrer-Policy",               "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy",            "value": "camera=(), microphone=(), geolocation=()" },
-        { "key": "Content-Security-Policy",       "value": "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https://4minit.xyz data:; font-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none';" }
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https://4minit.xyz data:; font-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'none';"
+        }
       ]
     },
     {
       "source": "/api/(.*)",
       "headers": [
-        { "key": "Access-Control-Allow-Origin",  "value": "https://4minit.xyz" },
-        { "key": "Access-Control-Allow-Methods", "value": "POST, OPTIONS" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+        { "key": "Cache-Control", "value": "no-store" }
       ]
     }
   ]

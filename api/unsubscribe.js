@@ -35,9 +35,29 @@ function brevoReq(method, path, body) {
 }
 
 const ALLOWED_ORIGIN = 'https://4minit.xyz';
-const EMAIL_RE = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/;
+const EMAIL_RE       = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/;
+
+// ── Rate limiting ─────────────────────────────────────────────────────────────
+const RATE_LIMIT_MAX    = 5;
+const RATE_LIMIT_WINDOW = 60 * 1000;
+const rateLimitMap      = new Map();
+
+function isRateLimited(ip) {
+  const now    = Date.now();
+  const record = rateLimitMap.get(ip);
+  if (!record || now > record.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW });
+    return false;
+  }
+  record.count += 1;
+  return record.count > RATE_LIMIT_MAX;
+}
 
 module.exports = async function handler(req, res) {
+  const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || 'unknown';
+  if (isRateLimited(ip)) {
+    return res.status(429).json({ error: 'Too many requests. Please try again later.' });
+  }
   const origin = req.headers['origin'] || '';
   if (origin === ALLOWED_ORIGIN) {
     res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN);
