@@ -7,7 +7,10 @@
     "node": ">=18"
   },
   "scripts": {
-    "pipeline:pre":  "node pipeline.js --pre",
+    "pipeline:pre": "node pipeline.js --pre",
     "pipeline:post": "node pipeline.js --post"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
   }
 }
