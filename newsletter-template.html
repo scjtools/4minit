@@ -31,11 +31,16 @@
 <meta property="og:image" content="https://4minit.xyz/assets/img/og-banner.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="4minit — Mauritius news in 4 minutes">
 <meta property="og:site_name" content="4minit">
+<meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{NEWSLETTER_TITLE}} — 4minit">
 <meta name="twitter:description" content="{{NEWSLETTER_SUBTITLE}}">
 <meta name="twitter:image" content="https://4minit.xyz/assets/img/og-banner.webp">
+<meta name="twitter:image:alt" content="4minit — Mauritius news in 4 minutes">
+<!-- RSS feed -->
+<link rel="alternate" type="application/rss+xml" title="4minit — Mauritius News in 4 Minutes" href="https://4minit.xyz/feed.xml">
 <!--[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
 <style>
   :root { color-scheme: light; supported-color-schemes: light; }
@@ -106,6 +111,71 @@
   h1, h2, h3, h4, h5, h6 { font-family: Arial, sans-serif !important; }
   body, table, td, p, a, span { font-family: Arial, sans-serif !important; }
 </style><![endif]-->
+<!-- Structured data (ignored by email clients) -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "{{NEWSLETTER_TITLE}}",
+    "description": "{{NEWSLETTER_SUBTITLE}}",
+    "datePublished": "{{NEWSLETTER_DATE_ISO}}",
+    "dateModified": "{{NEWSLETTER_DATE_ISO}}",
+    "url": "https://4minit.xyz/newsletters/{{NEWSLETTER_DATE_ISO}}",
+    "inLanguage": "en-GB",
+    "articleSection": "Newsletter",
+    "author": {
+      "@type": "Organization",
+      "name": "4minit",
+      "url": "https://4minit.xyz/"
+    },
+    "publisher": {
+      "@type": "NewsMediaOrganization",
+      "name": "4minit",
+      "url": "https://4minit.xyz/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://4minit.xyz/assets/img/favicons/icon.svg"
+      }
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://4minit.xyz/assets/img/og-banner.webp",
+      "width": 1200,
+      "height": 630
+    },
+    "isPartOf": {
+      "@type": "Periodical",
+      "name": "4minit",
+      "url": "https://4minit.xyz/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://4minit.xyz/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Archive",
+        "item": "https://4minit.xyz/newsletters/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{NEWSLETTER_TITLE}}",
+        "item": "https://4minit.xyz/newsletters/{{NEWSLETTER_DATE_ISO}}"
+      }
+    ]
+  }
+]
+</script>
 </head>
 
 <body class="a" style="margin:0 auto;padding:0;word-wrap:normal;word-spacing:normal;background-color:#FFFFFF;">
@@ -586,6 +656,7 @@
   WEB MODE SCRIPT — email clients strip <script> tags, browsers load it.
 -->
 <script src="/assets/js/newsletter.js" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
 
 </body>
 </html>

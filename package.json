@@ -8,6 +8,10 @@
   },
   "scripts": {
     "pipeline:pre":  "node pipeline.js --pre",
-    "pipeline:post": "node pipeline.js --post"
+    "pipeline:post": "node pipeline.js --post && node scripts/build-static.js && node scripts/generate-sitemap.js && node scripts/generate-feed.js",
+    "build:static":  "node scripts/build-static.js",
+    "build:sitemap": "node scripts/generate-sitemap.js",
+    "build:feed":    "node scripts/generate-feed.js",
+    "build":         "node scripts/build-static.js && node scripts/generate-sitemap.js && node scripts/generate-feed.js"
   }
 }

@@ -74,7 +74,7 @@ function main() {
     title,
     date:    dateArg,
     summary,
-    url:     `/newsletters/${dateArg}.html`,
+    url:     `/newsletters/${dateArg}`,
   });
 
   fs.writeFileSync(JSON_PATH, JSON.stringify(entries, null, 2) + '\n', 'utf8');
