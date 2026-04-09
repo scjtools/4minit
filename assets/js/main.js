@@ -117,7 +117,7 @@ function normaliseNewsletterItem(item = {}) {
   const explicitUrl = item.url || '';
   const title = item.title || 'Untitled edition';
   const summary = item.summary || item.excerpt || '';
-  const url = explicitUrl || (date ? `/newsletters/${date}.html` : '/newsletters');
+  const url = explicitUrl || (date ? `/newsletters/${date}` : '/newsletters');
 
   return {
     date,
