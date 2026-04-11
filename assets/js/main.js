@@ -138,8 +138,10 @@ function compareNewsletterDatesDesc(a, b) {
 }
 
 async function fetchNewsletters() {
-  const response = await fetch(NEWSLETTERS_DATA_URL, {
-    credentials: 'same-origin'
+  const cacheBust = `?v=${Date.now()}`;
+  const response = await fetch(NEWSLETTERS_DATA_URL + cacheBust, {
+    credentials: 'same-origin',
+    cache: 'no-cache'
   });
 
   if (!response.ok) {
