@@ -1,31 +1,40 @@
-<?xml version='1.0' encoding='utf-8'?>
-<rss version="2.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>4minit - Mauritius News in 4 Minutes</title>
+    <title>4minit — Mauritius News in 4 Minutes</title>
     <link>https://4minit.xyz/</link>
-    <description>A free daily newsletter covering Mauritius news, regional developments, and the global headlines that matter — in your inbox every morning.</description>
-    <language>en</language>
-    <lastBuildDate>Mon, 13 Apr 2026 06:00:00 +0400</lastBuildDate>
+    <atom:link href="https://4minit.xyz/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>A free daily newsletter covering Mauritius news, regional developments, and the global headlines that matter.</description>
+    <language>en-gb</language>
+    <copyright>© 4minit</copyright>
+    <managingEditor>4minit.mu@gmail.com (4minit)</managingEditor>
+    <lastBuildDate>Mon, 13 Apr 2026 04:00:00 GMT</lastBuildDate>
+    <ttl>1440</ttl>
+    <image>
+      <url>https://4minit.xyz/assets/img/og-banner.webp</url>
+      <title>4minit</title>
+      <link>https://4minit.xyz/</link>
+    </image>
     <item>
-      <title>Your electricity bill just got more expensive, and that's just the start</title>
-      <description>Today's 4minit: London puts the Chagos deal on ice. Iran's new Supreme Leader: wounded and out of sight. Oil tops $100 as US blockades Iranian ports.. Read more.</description>
+      <title>Your electricity bill just got more expensive, and that&amp;#39;s just the start</title>
       <link>https://4minit.xyz/newsletters/2026-04-13</link>
-      <guid>https://4minit.xyz/newsletters/2026-04-13</guid>
-      <pubDate>Mon, 13 Apr 2026 06:00:00 +0400</pubDate>
+      <guid isPermaLink="true">https://4minit.xyz/newsletters/2026-04-13</guid>
+      <description>London puts the Chagos deal on ice. Iran&amp;#39;s new Supreme Leader: wounded and out of sight. Oil tops $100 as US blockades Iranian ports.</description>
+      <pubDate>Mon, 13 Apr 2026 04:00:00 GMT</pubDate>
     </item>
     <item>
       <title>UK puts the Chagos deal on ice, and Mauritius is left waiting</title>
-      <description>Today's 4minit: Bread up, electricity up: the cabinet's crisis playbook. Ethiopia's Easter, overshadowed by fuel queues. Artemis crew splashes down after first Moon flyby in 52 years.. Read more.</description>
       <link>https://4minit.xyz/newsletters/2026-04-12</link>
-      <guid>https://4minit.xyz/newsletters/2026-04-12</guid>
-      <pubDate>Sun, 12 Apr 2026 06:00:00 +0400</pubDate>
+      <guid isPermaLink="true">https://4minit.xyz/newsletters/2026-04-12</guid>
+      <description>Bread up, electricity up: the cabinet&apos;s crisis playbook. Ethiopia&apos;s Easter, overshadowed by fuel queues. Artemis crew splashes down after first Moon flyby in 52 years.</description>
+      <pubDate>Sun, 12 Apr 2026 04:00:00 GMT</pubDate>
     </item>
     <item>
       <title>Bread up 50%, electricity up 15%: Mauritius starts paying the Middle East bill</title>
-      <description>Today's 4minit: Chagos bill pulled from King's Speech after Trump's reversal. Six terms, 97.8%: meet Djibouti's forever president. JD Vance arrives in Islamabad for landmark US-Iran talks.. Read more.</description>
       <link>https://4minit.xyz/newsletters/2026-04-11</link>
-      <guid>https://4minit.xyz/newsletters/2026-04-11</guid>
-      <pubDate>Sat, 11 Apr 2026 06:00:00 +0400</pubDate>
+      <guid isPermaLink="true">https://4minit.xyz/newsletters/2026-04-11</guid>
+      <description>Chagos bill pulled from King&apos;s Speech after Trump&apos;s reversal. Six terms, 97.8%: meet Djibouti&apos;s forever president. JD Vance arrives in Islamabad for landmark US-Iran talks.</description>
+      <pubDate>Sat, 11 Apr 2026 04:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

@@ -46,11 +46,14 @@ function main() {
     }
   }
 
-  const lastBuildDate = newsletters.length
-    ? toRFC822(newsletters[0].date)
+  // Include only the latest 3 newsletters
+  const latestNewsletters = newsletters.slice(0, 3);
+
+  const lastBuildDate = latestNewsletters.length
+    ? toRFC822(latestNewsletters[0].date)
     : new Date().toUTCString();
 
-  const items = newsletters.map(entry => {
+  const items = latestNewsletters.map(entry => {
     const url = BASE_URL + entry.url; // already clean URL, no .html
     return `    <item>
       <title>${escapeXml(entry.title)}</title>
@@ -84,7 +87,7 @@ ${items}
 `;
 
   fs.writeFileSync(FEED_OUT, xml, 'utf8');
-  console.log(`✓ feed.xml generated (${newsletters.length} item(s))`);
+  console.log(`✓ feed.xml generated (${latestNewsletters.length} item(s))`);
 }
 
 main();
