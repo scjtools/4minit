@@ -15,8 +15,8 @@ I don't have the time to scour dozens of sites, doomscroll on Facebook pages, or
 
 ## How does 4minit cut through the noise?
 
-1. News aggregation, filtration and clustering are handled upstream by the [Mauritius News Aggregator](https://github.com/scjtools/mauritius-news-aggregator)
-2. "Newsworthiness" selection step (powered by AI) distills the upstream feed down into a shortlist of articles (based on a bunch of my preset preferences, interests etc.)
-3. Selected articles are reviewed and summarised into our newsletters, which are then published online (powered by Vercel) and delivered to subscribers (powered by Brevo) - every morning.
+1. News aggregation, filtration and clustering are handled upstream
+2. "Newsworthiness" selection step (based on various preset preferences, interest profiles etc.) distills the upstream feed down into a shortlist of items
+3. Selected items are reviewed and summarised into the newsletter format, which is then published online and delivered to subscribers - every morning at zero cost.
 
-The entire setup is fully automated and runs on its own. I do have some ocassional manual intervention - typically bug fixes, error handling, UI/UX upgrades, LLM token optimisation etc.
+The entire workflow is fully automated. Ocassional (ad-hoc) manual intervention typically involves bug fixes, error handling, UI/UX upgrades, LLM token optimisation etc.
