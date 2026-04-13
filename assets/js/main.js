@@ -1,6 +1,12 @@
 const NEWSLETTERS_DATA_URL = '/assets/data/newsletters.json';
 const LATEST_NEWSLETTER_LIMIT = 6;
 
+function decodeHtmlEntities(text) {
+  const textarea = document.createElement('textarea');
+  textarea.innerHTML = text;
+  return textarea.value;
+}
+
 async function loadPartial(targetId, url) {
   const target = document.getElementById(targetId);
   if (!target) return;
@@ -176,8 +182,8 @@ function createEditionCard(item, isLatest = false) {
   const ctaEl = fragment.querySelector('.edition-cta');
 
   dateEl.textContent = formatEditionDate(item.date);
-  titleEl.textContent = item.title;
-  summaryEl.textContent = item.summary;
+  titleEl.textContent = decodeHtmlEntities(item.title);
+  summaryEl.textContent = decodeHtmlEntities(item.summary);
   ctaEl.href = item.url;
 
   if (isLatest && latestBadge) {
