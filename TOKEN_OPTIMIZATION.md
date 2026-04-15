@@ -96,6 +96,19 @@ The `master_prompt.md` must be fully loaded every newsletter run. It contains:
 
 ---
 
+### 5. ✅ Reuse Fetched Content in Session
+
+**Process:**
+- Maintain URL cache dictionary during newsletter writing
+- Before fetching a URL, check if already fetched in this session
+- If cached, use stored content (don't re-fetch)
+- If new, fetch and cache
+
+**Token Savings:** 0.5-1K per newsletter (rarely reuses URLs, but saves when it happens)  
+**Quality Impact:** None (identical content)
+
+---
+
 ## Total Token Savings
 
 | Area | Savings | Method |
@@ -104,7 +117,8 @@ The `master_prompt.md` must be fully loaded every newsletter run. It contains:
 | WebFetch blocklist | 3-6K | Skip known failures |
 | Newsletter cache | 5-10K | Load JSON not HTML |
 | Feed source reduction | 5-8K | Remove Al Jazeera, BBC |
-| **TOTAL** | **23-44K** | |
+| Reuse fetched content | 0.5-1K | Session cache |
+| **TOTAL** | **23-45K** | |
 
 **Daily impact:** 23-44K tokens saved  
 **Monthly impact:** ~690K-1.32M tokens saved  
