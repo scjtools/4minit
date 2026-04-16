@@ -246,11 +246,13 @@ function stripScriptTags(html) {
 async function sendViaBrevo(dateStr, htmlContent, subject) {
   if (!BREVO_LIST_ID) throw new Error('BREVO_LIST_ID is not set');
 
+  const testEmail = process.env.BREVO_TEST_EMAIL || null;
   const emailHtml = stripScriptTags(htmlContent);
+
   console.log('→ Creating Brevo email campaign…');
 
   const createRes = await brevoReq('POST', '/v3/emailCampaigns', {
-    name:       `4minit — ${dateStr}`,
+    name:       `4minit — ${dateStr}${testEmail ? ' [TEST]' : ''}`,
     subject,
     sender:     { email: BREVO_SENDER_EMAIL, name: BREVO_SENDER_NAME },
     type:       'classic',
@@ -265,12 +267,24 @@ async function sendViaBrevo(dateStr, htmlContent, subject) {
   const { id } = JSON.parse(createRes.body);
   console.log(`  Campaign ID: ${id}`);
 
-  console.log('→ Sending now…');
-  const sendRes = await brevoReq('POST', `/v3/emailCampaigns/${id}/sendNow`, {});
-  if (sendRes.status !== 204) {
-    throw new Error(`Send failed: HTTP ${sendRes.status}\n${sendRes.body}`);
+  if (testEmail) {
+    // Send to test address only — does not touch the subscriber list
+    console.log(`→ TEST MODE — sending to ${testEmail} only…`);
+    const testRes = await brevoReq('POST', `/v3/emailCampaigns/${id}/sendTest`, {
+      emailTo: [testEmail],
+    });
+    if (testRes.status !== 204) {
+      throw new Error(`Test send failed: HTTP ${testRes.status}\n${testRes.body}`);
+    }
+    console.log(`✓ Test email sent to ${testEmail} (subscribers not notified)`);
+  } else {
+    console.log('→ Sending now…');
+    const sendRes = await brevoReq('POST', `/v3/emailCampaigns/${id}/sendNow`, {});
+    if (sendRes.status !== 204) {
+      throw new Error(`Send failed: HTTP ${sendRes.status}\n${sendRes.body}`);
+    }
+    console.log('✓ Newsletter dispatched to subscribers');
   }
-  console.log('✓ Newsletter dispatched to subscribers');
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
