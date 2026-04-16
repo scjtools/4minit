@@ -1,0 +1,24 @@
+# Sources to skip during webfetch phase
+# These either fail consistently, require authentication, or provide only redirects
+# Token cost of attempting fetch: ~300-500 tokens each
+# This blocklist prevents unnecessary wasted tokens
+
+blocked_domains:
+  - "bbc.com"
+  - "bbc.co.uk"
+  - "mega.mu"  # Redirect pages, no article content
+
+blocked_patterns:
+  - "paywall"
+  - "subscription"
+  - "login"
+  - "auth"
+
+# Why these are blocked:
+# - BBC: Requires authentication, blocks scraping, 0% utilization
+# - mega.mu: Redirect wrapper with no actual article content, only feed summaries available
+#
+# Token savings: ~3-6K per newsletter by skipping ~10-20 failed fetch attempts
+
+# Last updated: 2026-04-15
+# Review quarterly and remove if these sources become fetchable/valuable

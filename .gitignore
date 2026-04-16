@@ -22,9 +22,11 @@ node_modules/
 
 # Private — not for GitHub
 master_prompt.md
-pipeline.js
-feed.json
+prompts/
 .claude/
+
+# Pipeline ephemeral / runtime
+feed.json
 
 # Pipeline ephemeral — generated at runtime, never committed
 scripts/.git-askpass.sh
