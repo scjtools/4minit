@@ -330,8 +330,65 @@ async function main() {
 
     console.log('\n🎉 Pipeline complete!\n');
 
+  } else if (mode === '--undo') {
+    const dateArg = process.argv[3];
+    if (!dateArg || !/^\d{4}-\d{2}-\d{2}$/.test(dateArg)) {
+      throw new Error('--undo requires a date argument: YYYY-MM-DD');
+    }
+
+    console.log(`\n📰 4minit Pipeline — UNDO  (${dateArg})\n`);
+
+    const env = {
+      ...process.env,
+      GIT_AUTHOR_NAME:     'pipeline',
+      GIT_AUTHOR_EMAIL:    'pipeline@4minit.xyz',
+      GIT_COMMITTER_NAME:  'pipeline',
+      GIT_COMMITTER_EMAIL: 'pipeline@4minit.xyz',
+    };
+
+    // Set up git credentials
+    const askpass = path.join(REPO_DIR, 'scripts', '.git-askpass.sh');
+    fs.writeFileSync(askpass, `#!/bin/sh\necho "${GITHUB_TOKEN}"\n`, { mode: 0o700 });
+    env.GIT_ASKPASS = askpass;
+    env.GIT_TERMINAL_PROMPT = '0';
+    const opts = { cwd: REPO_DIR, stdio: 'inherit', env };
+
+    // 1. Pull latest so we're in sync
+    execSync('git pull --rebase origin main', opts);
+
+    // 2. Find the commit for this newsletter date and revert it
+    const log = execSync(`git log --oneline --grep="Newsletter ${dateArg}"`, { cwd: REPO_DIR, env }).toString().trim();
+    if (!log) {
+      console.log(`⚠  No commit found matching "Newsletter ${dateArg}" — nothing to revert on git.`);
+    } else {
+      const sha = log.split(' ')[0];
+      console.log(`→ Reverting commit ${sha} (${log})`);
+      execSync(`git revert --no-edit ${sha}`, opts);
+      execSync('git push origin main', opts);
+      console.log('✓ Commit reverted and pushed — Vercel will redeploy automatically');
+    }
+
+    // 3. Restore previous_newsletter.json to the version before this run
+    //    (the revert above restores the committed files; previous_newsletter.json
+    //     was never committed so we rebuild it from the prior newsletter)
+    const allNewsletters = fs.readdirSync(NEWSLETTERS_DIR)
+      .filter(f => /^\d{4}-\d{2}-\d{2}\.html$/.test(f))
+      .sort()
+      .reverse();
+
+    const prevFile = allNewsletters.find(f => f < `${dateArg}.html`);
+    if (prevFile) {
+      console.log(`→ Rebuilding previous_newsletter.json from ${prevFile}…`);
+      execSync(`python3 scripts/cache_previous_newsletter.py newsletters/${prevFile}`, { cwd: REPO_DIR, stdio: 'inherit' });
+      console.log('✓ previous_newsletter.json restored');
+    } else {
+      console.log('⚠  No prior newsletter found — previous_newsletter.json left as-is');
+    }
+
+    console.log('\n✅ Undo complete. Test run has been erased.\n');
+
   } else {
-    console.error('Usage: node pipeline.js --pre | --post YYYY-MM-DD');
+    console.error('Usage: node pipeline.js --pre | --post YYYY-MM-DD | --undo YYYY-MM-DD');
     process.exit(1);
   }
 }
